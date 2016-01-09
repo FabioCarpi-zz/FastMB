@@ -57,8 +57,8 @@ if(isset($_GET["action"])){
                 </script>
             </td>
             <td style="text-align:center;">
-                <a href="#" onclick="Ajax('index.php?action=Mercado&pair=btc','AjaxMercado',null,'self');">Bitcoins</a> -
-                <a href="#" onclick="Ajax('index.php?action=Mercado&pair=ltc','AjaxMercado',null,'self');">Litecoin</a><br> 
+                <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxMercado',null,'self');">Bitcoins</a> -
+                <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxMercado',null,'self');">Litecoin</a><br> 
                 <a href="#" onclick="Ajax('concluidas.php','AjaxMercado');">Ordens concluídas</a> - 
                 <a href="#" onclick="Ajax('simulador.php','AjaxMercado')">Simulador</a>
             </td>
