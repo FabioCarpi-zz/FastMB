@@ -7,8 +7,8 @@ d0e45e38237ebc5fea80bf58287ef379 C:\GitHub\FastMB\www\global.css
 97ed0b5469cc0a7b2827107f77c0c887 C:\GitHub\FastMB\www\head.php
 45d9c4639273340d4ade84766d486ac8 C:\GitHub\FastMB\www\index.php
 2c55dcadb588bec988df2fb1935391b5 C:\GitHub\FastMB\www\litecoins.php
-d5f3ecf10806cc2e8f6039d746dcaa35 C:\GitHub\FastMB\www\mercado.php
-8d4eecb1ed377d42172b1b5b234dd0f8 C:\GitHub\FastMB\www\ordens.php
+baa3d46a423b8ae22667cfcb386fdcba C:\GitHub\FastMB\www\mercado.php
+d1027bc0ee03d802fdf76e6e16696791 C:\GitHub\FastMB\www\ordens.php
 a4b8fdb8034e701d9ecb83aac003a0de C:\GitHub\FastMB\www\simulador.js
 72839c742c3480dcd30cd0b743c866c7 C:\GitHub\FastMB\www\simulador.php
 23b98ba45ddd19000195b6c431912816 C:\GitHub\FastMB\www\system.php

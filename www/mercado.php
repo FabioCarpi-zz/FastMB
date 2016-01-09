@@ -5,7 +5,7 @@ if($_GET["pair"] == "btc"){
 }else{
     $temp = "orderbook_litecoin";
 }
-@$dados = json_decode(file_get_contents("https://www.mercadobitcoin.net/api/".$temp), true);?>
+@$dados = json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/".$temp), true);?>
 <table class="Center">
     <tr>
         <td style="vertical-align:top;">
@@ -54,7 +54,7 @@ if($_GET["pair"] == "btc"){
         }else{
             $temp = "trades_litecoin";
         }
-        @$dados = array_reverse(json_decode(file_get_contents("https://www.mercadobitcoin.net/api/".$temp."/".strtotime("-12 hours")), true));?>
+        @$dados = array_reverse(json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/".$temp."/".strtotime("-12 hours")), true));?>
         <td style="vertical-align:top;">
             <table border="1">
                 <tr><th colspan="4">Ordens executadas</th></tr>

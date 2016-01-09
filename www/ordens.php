@@ -9,7 +9,7 @@
         <th>Auto compra</th>
     </tr><?php
     $_SESSION["Config"]["Ordens"] = array();
-    $dados = Obter("OrderList&pair=btc_brl&status=active");
+    @$dados = Obter("OrderList&pair=btc_brl&status=active");
     if(is_null($dados)){?>
         <tr><td colspan="4" style="text-align:center;">Erro ao obter ordens em BTC</td></tr><?php
     }else{
