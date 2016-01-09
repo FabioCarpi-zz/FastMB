@@ -34,11 +34,9 @@ function Ajax(Url, Retorno, Dados, Refresh){
 		}else if(ObjetoAjax[Retorno].readyState == 4 && ObjetoAjax[Retorno].status == 404){
 			document.getElementById(Retorno).innerHTML = "Erro 404: Página não encontrada";
 			document.body.style.cursor = "default";
-			delete ObjetoAjax[Retorno];
 		}else if(ObjetoAjax[Retorno].readyState == 4 && (ObjetoAjax[Retorno].status == 200 || ObjetoAjax[Retorno].status == 500)){
 			document.getElementById(Retorno).innerHTML = ObjetoAjax[Retorno].responseText;
 			document.body.style.cursor = "default";
-			delete ObjetoAjax[Retorno];
 		}
 	}
 	if(Dados == null){

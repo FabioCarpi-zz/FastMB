@@ -11,9 +11,6 @@ function cmp($A, $B){
 if(isset($_GET["action"]) and $_GET["action"] == "Del"){
 
 }else{?>
-    <div style="text-align:center;">
-        <h1>Ordens</h1>
-    </div>
     <table border="1" class="Center">
         <tr>
             <th>Moeda</th>

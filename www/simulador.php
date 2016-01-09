@@ -21,6 +21,10 @@
         <tr>
             <td>Bitcoins:</td>
             <td><input type="text" name="bitcoins"  size="13" disabled></td>
+            <td><input type="button" value="&gt;&gt;" onclick="
+                document.forme.valor.value = document.simulador.compra.value;
+                document.forme.volume.value = document.simulador.bitcoins.value;
+            "></td>
         </tr>
         <tr>
             <td>Taxa compra:</td>

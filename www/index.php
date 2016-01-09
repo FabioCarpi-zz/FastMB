@@ -75,7 +75,8 @@ if(isset($_GET["action"])){
                         <option value="sell">Vender</option>
                     </select><br>
                     Valor: 
-                    <input type="text" name="valor" size="7" onkeyup="document.forme.valor2.value=document.forme.valor.value*1.01"><input type="text" name="valor2" size="7" disabled><br>
+                    <input type="text" name="valor" size="7" onkeyup="document.forme.valor2.value=document.forme.valor.value*1.01">
+                    <input type="text" name="valor2" size="7" disabled><br>
                     Quantidade: <input type="text" name="volume" size="7">
                     <input type="button" value="&lt;&lt;" onclick="
                         if(document.forme.tipo.value == 'buy' && document.forme.pair.value == 'btc'){
