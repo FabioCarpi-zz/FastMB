@@ -1,8 +1,8 @@
-var ObjetoAjax = [];
-var Atualizar = [];
+var ObjetoAjax = [], Atualizar = [];
 
 function Ajax(Url, Retorno, Dados, Refresh){
     var PageTarget;
+    clearTimeout(Atualizar[Retorno]);
     if(typeof Refresh == "undefined"){
         clearTimeout(Atualizar[Retorno]);
     }else{
@@ -11,7 +11,6 @@ function Ajax(Url, Retorno, Dados, Refresh){
         }else{
             PageTarget = Refresh;
         }
-        clearTimeout(Atualizar[Retorno]);
         Atualizar[Retorno] = setTimeout(function(){
             Ajax(PageTarget, Retorno, Dados, Refresh);
         }, 30*1000);

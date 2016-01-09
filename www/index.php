@@ -14,7 +14,7 @@ if(isset($_GET["action"])){
                 echo $dados["error"]."<br>";
             }?>
             <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','Ordens');
-                Ajax('index.php?action=Saldo','Saldo',null,'self');">Atualizar</a>
+                Ajax('index.php?action=Saldo','AjaxSaldo',null,'self');">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "New2"){
@@ -39,7 +39,7 @@ if(isset($_GET["action"])){
                 echo $dados["error"]."<br>";
             }?>
             <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','Ordens');
-                Ajax('index.php?action=Saldo','Saldo',null,'self');">Atualizar</a>
+                Ajax('index.php?action=Saldo','AjaxSaldo',null,'self');">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "Saldo"){
@@ -51,10 +51,16 @@ if(isset($_GET["action"])){
 }else{?>
     <table class="Center" style="width:100%">
         <tr>
-            <td style="text-align:center;" id="Saldo">
+            <td style="text-align:center;width:300px;" id="AjaxSaldo">
                 <script>
-                    Ajax("index.php?action=Saldo", "Saldo", null, "self");
+                    Ajax("index.php?action=Saldo", "AjaxSaldo", null, "self");
                 </script>
+            </td>
+            <td style="text-align:center;">
+                <a href="#" onclick="Ajax('index.php?action=Mercado&pair=btc','AjaxMercado',null,'self');">Bitcoins</a> -
+                <a href="#" onclick="Ajax('index.php?action=Mercado&pair=ltc','AjaxMercado',null,'self');">Litecoin</a><br> 
+                <a href="#" onclick="Ajax('concluidas.php','AjaxMercado');">Ordens concluídas</a> - 
+                <a href="#" onclick="Ajax('simulador.php','AjaxMercado')">Simulador</a>
             </td>
             <td style="text-align:center;width:210px;vertical-align:top;" rowspan="2">
                 <form name="forme" style="border:solid 1px #000;">
@@ -97,7 +103,7 @@ if(isset($_GET["action"])){
             </td>
         </tr>
         <tr>
-            <td style="text-align:center;">
+            <td style="text-align:center;" colspan="2">
                 <span id="Ordens">
                     <script>
                         Ajax("ordens.php?pair=btc", "Ordens", null, "self");
@@ -106,16 +112,10 @@ if(isset($_GET["action"])){
             </td>
         </tr>
         <tr>
-            <td style="text-align:center;vertical-align:top;" colspan="2">
-                <a href="#" onclick="Ajax('index.php?action=Mercado&pair=btc','Mercado',null,'self');">Bitcoins</a> -
-                <a href="#" onclick="Ajax('index.php?action=Mercado&pair=ltc','Mercado',null,'self');">Litecoin</a> - 
-                <a href="#" onclick="Ajax('concluidas.php','Mercado');">Ordens concluídas</a> - 
-                <a href="#" onclick="Ajax('simulador.php','Mercado')">Simulador</a><br>
-                <span id="Mercado">
-                    <script>
-                        Ajax("mercado.php?pair=btc", "Mercado", null, "self");
-                    </script>
-                </span>
+            <td style="text-align:center;vertical-align:top;" colspan="3" id="AjaxMercado">
+                <script>
+                    Ajax("mercado.php?pair=btc", "AjaxMercado", null, "self");
+                </script>
             </td>
         </tr>
     </table><?php

@@ -8,7 +8,7 @@ function cmp($A, $B){
     return $A["created"] > $B["created"] ? -1 : 1;
 }
 
-if(isset($_GET["action"]) and $_GET["action"] == "Del"){
+if(isset($_GET["action"])){
 
 }else{?>
     <table border="1" class="Center">
@@ -46,7 +46,7 @@ if(isset($_GET["action"]) and $_GET["action"] == "Del"){
                 </td>
             </tr><?php
         }?>
-    <table><br>
+    </table><br>
     <table border="1" class="Center">
         <tr>
             <th>Moeda</th>
@@ -76,7 +76,7 @@ if(isset($_GET["action"]) and $_GET["action"] == "Del"){
                     }?>
                 </td>
                 <td style="text-align:center;"><?php
-                    $temp = ($temp-$linha["created"]) / (60*60*24);
+                    $temp = ($temp - $linha["created"]) / (60*60*24);
                     echo number_format($temp, 4);?>
                 </td>
             </tr><?php
