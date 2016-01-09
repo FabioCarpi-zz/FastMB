@@ -5,10 +5,10 @@ b9324decf6c088dbb7a2e5e6fe00d2d5 C:\GitHub\FastMB\www\del.gif
 a92143d61f3400c353ad3bf7c73b64d9 C:\GitHub\FastMB\www\foot.php
 d0e45e38237ebc5fea80bf58287ef379 C:\GitHub\FastMB\www\global.css
 97ed0b5469cc0a7b2827107f77c0c887 C:\GitHub\FastMB\www\head.php
-96f176d092b07790cfcdc609d35fb971 C:\GitHub\FastMB\www\index.php
+43cd58c7a1efbd34df1c067d69d12a5f C:\GitHub\FastMB\www\index.php
 2c55dcadb588bec988df2fb1935391b5 C:\GitHub\FastMB\www\litecoins.php
 baa3d46a423b8ae22667cfcb386fdcba C:\GitHub\FastMB\www\mercado.php
 d1027bc0ee03d802fdf76e6e16696791 C:\GitHub\FastMB\www\ordens.php
 a4b8fdb8034e701d9ecb83aac003a0de C:\GitHub\FastMB\www\simulador.js
 3679cf6a112afc21f61901e174dba82c C:\GitHub\FastMB\www\simulador.php
-23b98ba45ddd19000195b6c431912816 C:\GitHub\FastMB\www\system.php
+9610b93623147663bdfaae1179760427 C:\GitHub\FastMB\www\system.php

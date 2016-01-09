@@ -13,7 +13,7 @@ if(isset($_GET["action"])){
                 echo $dados["error"]."<br>";
             }?>
             <a href="#" onclick="Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Ordens','Ordens');
-                Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Saldo','Saldo');">Atualizar</a>
+                Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Saldo','Saldo',null,'self');">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "New2"){
@@ -38,7 +38,7 @@ if(isset($_GET["action"])){
                 echo $dados["error"]."<br>";
             }?>
             <a href="#" onclick="Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Ordens','Ordens');
-                Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Saldo','Saldo');">Atualizar</a>
+                Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Saldo','Saldo',null,'self');">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "Saldo"){

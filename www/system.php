@@ -1,4 +1,4 @@
-<?php
+<?php // Versão 1.1.3 de 09/01/2016
 ini_set("error_reporting", E_ALL);
 ini_set("html_errors", true);
 ini_set("display_errors", true);
