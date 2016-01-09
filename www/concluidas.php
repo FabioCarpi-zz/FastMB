@@ -81,8 +81,7 @@ if(isset($_GET["action"])){
                 </td>
             </tr><?php
         }?>
-    </table><br>
-    <div style="text-align:center;"><a href="index.php">Voltar</a></div><?php
+    </table><?php
 }
 
 require("foot.php");
