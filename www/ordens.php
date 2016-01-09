@@ -1,3 +1,6 @@
+<?php
+require("system.php");?>
+
 <table border="1" class="Center">
     <tr>
         <td></td>

@@ -1,5 +1,6 @@
 <?php
-//require("autovenda.php");
+require("system.php");
+
 if($_GET["pair"] == "btc"){
     $temp = "orderbook";
 }else{

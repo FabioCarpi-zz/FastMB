@@ -1,5 +1,6 @@
 <?php
 require("system.php");
+require("head.php");
 
 if(isset($_GET["action"])){
     if($_GET["action"] == "Del"){
@@ -12,8 +13,8 @@ if(isset($_GET["action"])){
             }else{
                 echo $dados["error"]."<br>";
             }?>
-            <a href="#" onclick="Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Ordens','Ordens');
-                Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Saldo','Saldo',null,'self');">Atualizar</a>
+            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','Ordens');
+                Ajax('index.php?action=Saldo','Saldo',null,'self');">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "New2"){
@@ -37,29 +38,22 @@ if(isset($_GET["action"])){
             }else{
                 echo $dados["error"]."<br>";
             }?>
-            <a href="#" onclick="Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Ordens','Ordens');
-                Ajax('<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Saldo','Saldo',null,'self');">Atualizar</a>
+            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','Ordens');
+                Ajax('index.php?action=Saldo','Saldo',null,'self');">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "Saldo"){
         $dados = Obter("getInfo");?>
-        <strong>Saldos</strong><br>
         BRL: <span id="brl"><?php echo $dados["return"]["funds"]["brl"];?></span><br>
         BTC: <span id="btc"><?php echo $dados["return"]["funds"]["btc"];?></span><br>
         LTC: <span id="ltc"><?php echo $dados["return"]["funds"]["ltc"];?></span><?php
-
-    }elseif($_GET["action"] == "Ordens"){
-        require("ordens.php");
-    }elseif($_GET["action"] == "Mercado"){
-        require("mercado.php");
     }
-}else{
-    require("head.php");?>
+}else{?>
     <table class="Center" style="width:100%">
         <tr>
             <td style="text-align:center;" id="Saldo">
                 <script>
-                    Ajax("<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Saldo", "Saldo", null, "self");
+                    Ajax("index.php?action=Saldo", "Saldo", null, "self");
                 </script>
             </td>
             <td style="text-align:center;width:210px;vertical-align:top;" rowspan="2">
@@ -106,7 +100,7 @@ if(isset($_GET["action"])){
             <td style="text-align:center;">
                 <span id="Ordens">
                     <script>
-                        Ajax("<?php echo basename($_SERVER["PHP_SELF"]);?>?action=Ordens&pair=btc", "Ordens", null, "self");
+                        Ajax("ordens.php?pair=btc", "Ordens", null, "self");
                     </script>
                 </span>
             </td>
@@ -119,7 +113,7 @@ if(isset($_GET["action"])){
                 <a href="#" onclick="Ajax('simulador.php','Mercado')">Simulador</a><br>
                 <span id="Mercado">
                     <script>
-                        Ajax("index.php?action=Mercado&pair=btc", "Mercado", null, "self");
+                        Ajax("mercado.php?pair=btc", "Mercado", null, "self");
                     </script>
                 </span>
             </td>
