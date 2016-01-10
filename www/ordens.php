@@ -13,12 +13,11 @@ require_once("autovenda.php");?>
         <th>Auto compra</th>
     </tr><?php
     $_SESSION["Config"]["Ordens"] = array();
-    @$dados = Obter("OrderList&pair=btc_brl&status=active");
+    @$dados = MB("OrderList&pair=btc_brl&status=active");
     if(is_null($dados)){?>
         <tr><td colspan="7" style="text-align:center;">Erro ao obter ordens em BTC</td></tr><?php
     }else{
-        foreach($dados["return"] as $id => $linha){
-            ConfigLoad();?>
+        foreach($dados["return"] as $id => $linha){?>
             <tr>
                 <td><a href="#" onclick="Ajax('index.php?action=Del&pair=btc&id=<?php echo $id;?>','AjaxOrdens')" onclick="return confirm('Deseja realmente excluir essa ordem?')"><img src="del.gif" border="0"></a></td>
                 <td style="text-align:center;">BTC</td>
@@ -31,18 +30,20 @@ require_once("autovenda.php");?>
                         echo $_SESSION["Config"]["Auto"]["btc"][$id]["venda"];
                     }?>
                 </td>
-                <td style="text-align:center;">
-
+                <td style="text-align:center;"><?php
+                    if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["vendacent"])){
+                        echo $_SESSION["Config"]["Auto"]["btc"][$id]["compracent"]."% - "; 
+                        echo $_SESSION["Config"]["Auto"]["btc"][$id]["compra"];
+                    }?>
                 </td>
             </tr><?php
         }
     }
-    $dados = Obter("OrderList&pair=ltc_brl&status=active");
+    $dados = MB("OrderList&pair=ltc_brl&status=active");
     if(is_null($dados)){?>
         <tr><td colspan="7" style="text-align:center;">Erro ao obter ordens em LTC</td></tr><?php
     }else{
-        foreach($dados["return"] as $id => $linha){
-            ConfigLoad();?>
+        foreach($dados["return"] as $id => $linha){?>
             <tr>
                 <td><a href="#" onclick="Ajax('index.php?action=Del&pair=ltc&id=<?php echo $id;?>','AjaxOrdens')" onclick="return confirm('Deseja realmente excluir essa ordem?')"><img src="del.gif" border="0"></a></td>
                 <td style="text-align:center;">LTC</td>
@@ -55,7 +56,11 @@ require_once("autovenda.php");?>
                         echo $_SESSION["Config"]["Auto"]["ltc"][$id]["venda"];
                     }?>
                 </td>
-                <td style="text-align:center;">
+                <td style="text-align:center;"><?php
+                    if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["vendacent"])){
+                        echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compracent"]."% - "; 
+                        echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compra"];
+                    }?>
 
                 </td>
             </tr><?php

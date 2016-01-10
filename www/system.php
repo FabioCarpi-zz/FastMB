@@ -1,4 +1,4 @@
-<?php // Versão 1.2 de 10/01/2016
+<?php // Versão 1.2.1 de 10/01/2016
 ini_set("error_reporting", E_ALL);
 ini_set("html_errors", true);
 ini_set("display_errors", true);
@@ -7,6 +7,7 @@ ini_set("default_socket_timeout", 1);
 session_start();
 
 require_once("config.php");
+ConfigLoad();
 
 function PhpLiveImport($nome){
 	$arquivo = @file_get_contents("https://raw.githubusercontent.com/FabioCarpi/PHP-Live/master/".$nome.".txt");
@@ -17,7 +18,7 @@ function PhpLiveImport($nome){
 	require_once($nome);
 }
 
-function Obter($Comando){
+function MB($Comando){
     $msg = "method=".$Comando."&tonce=".time();
     
     $ch = curl_init();

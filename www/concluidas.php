@@ -22,7 +22,7 @@ if(isset($_GET["action"])){
             <th>Execução (Taxa)</th>
             <th>Dias</th>
         </tr><?php
-        $dados = Obter("OrderList&pair=btc_brl&status=completed");
+        $dados = MB("OrderList&pair=btc_brl&status=completed");
         uasort($dados["return"], "cmp");
         foreach($dados["return"] as $linha){?>
             <tr>
@@ -58,7 +58,7 @@ if(isset($_GET["action"])){
             <th>Execução (Taxa)</th>
             <th>Dias</th>
         </tr><?php
-        $dados = Obter("OrderList&pair=ltc_brl&status=completed");
+        $dados = MB("OrderList&pair=ltc_brl&status=completed");
         foreach($dados["return"] as $linha){?>
             <tr>
                 <td style="text-align:center;">LCT</td>

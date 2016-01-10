@@ -4,7 +4,7 @@ require_once("system.php");
 if(isset($_GET["action"])){
     if($_GET["action"] == "Del"){
         require_once("head.php");
-        $dados = Obter("CancelOrder&pair=".$_GET["pair"]."_brl&order_id=".$_GET["id"]);?>
+        $dados = MB("CancelOrder&pair=".$_GET["pair"]."_brl&order_id=".$_GET["id"]);?>
         <div style="text-align:center;"><?php
             if($dados["success"]){
                 echo "Ordem excluída com êxito<br>";
@@ -19,7 +19,7 @@ if(isset($_GET["action"])){
         </div><?php
 
     }elseif($_GET["action"] == "New2"){
-        $dados = Obter("Trade&pair=".$_POST["pair"]."_brl&type=".$_POST["tipo"].
+        $dados = MB("Trade&pair=".$_POST["pair"]."_brl&type=".$_POST["tipo"].
             "&volume=".str_replace(",", ".", $_POST["volume"]).
             "&price=".str_replace(",", ".", $_POST["valor"]));?>
         <div style="text-align:center;"><?php
@@ -29,7 +29,9 @@ if(isset($_GET["action"])){
                     $_SESSION["Config"]["Auto"][$_POST["pair"]][key($dados["return"])] = array(
                         "tipo" => $_POST["tipo"],
                         "vendacent" => $_POST["autovenda"],
-                        "venda" => $_POST["valor"] + ($_POST["valor"] * ($_POST["autovenda"] / 100))
+                        "venda" => $_POST["valor"] + ($_POST["valor"] * ($_POST["autovenda"] / 100)),
+                        "compracent" => $_POST["autocompra"],
+                        "compra" => $_POST["valor"] + ($_POST["valor"] * ($_POST["autocompra"] / 100))
                     );
                     ConfigSave();
                 }
@@ -42,7 +44,7 @@ if(isset($_GET["action"])){
         </div><?php
 
     }elseif($_GET["action"] == "Saldo"){
-        $dados = Obter("getInfo");?>
+        $dados = MB("getInfo");?>
         BRL: <span id="brl"><?php echo $dados["return"]["funds"]["brl"];?></span><br>
         BTC: <span id="btc"><?php echo $dados["return"]["funds"]["btc"];?></span><br>
         LTC: <span id="ltc"><?php echo $dados["return"]["funds"]["ltc"];?></span><?php
@@ -62,7 +64,7 @@ if(isset($_GET["action"])){
                 <a href="#" onclick="Ajax('concluidas.php','AjaxMercado');">Ordens concluídas</a> - 
                 <a href="#" onclick="Ajax('simulador.php','AjaxMercado')">Simulador</a>
             </td>
-            <td style="text-align:center;width:210px;vertical-align:top;" rowspan="2">
+            <td style="text-align:center;width:220px;vertical-align:top;white-space:nowrap;" rowspan="2">
                 <form name="forme" style="border:solid 1px #000;">
                     Moeda: 
                     <select name="pair">
@@ -90,7 +92,9 @@ if(isset($_GET["action"])){
                     Auto venda: <input type="text" name="autovenda" size="2" onkeyup="
                         document.forme.autovenda2.value = parseFloat(document.forme.valor.value) + (document.forme.valor.value * document.forme.autovenda.value / 100);
                     "><input type="text" name="autovenda2" size="7" disabled><br>
-                    Auto compra: <input type="text" name="autocompra" size="2"><br>
+                    Auto compra: <input type="text" name="autocompra" size="2" onkeyup="
+                        document.forme.autocompra2.value = parseFloat(document.forme.autovenda2.value) - (document.forme.autovenda2.value * document.forme.autocompra.value / 100);
+                    "><input type="text" name="autocompra2" size="7" disabled><br>
                     <input type="button" value=" Criar " onclick="Ajax('index.php?action=New2','AjaxOrdens',
                         'pair='+document.forme.pair.value+
                         '&tipo='+document.forme.tipo.value+
