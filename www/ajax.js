@@ -3,9 +3,7 @@ var ObjetoAjax = [], Atualizar = [];
 function Ajax(Url, Retorno, Dados, Refresh){
     var PageTarget;
     clearTimeout(Atualizar[Retorno]);
-    if(typeof Refresh == "undefined"){
-        clearTimeout(Atualizar[Retorno]);
-    }else{
+    if(typeof Refresh != "undefined"){
         if(Refresh == "self"){
             PageTarget = Url;
         }else{
@@ -33,9 +31,11 @@ function Ajax(Url, Retorno, Dados, Refresh){
 		}else if(ObjetoAjax[Retorno].readyState == 4 && (ObjetoAjax[Retorno].status == 200 || ObjetoAjax[Retorno].status == 500)){
 			document.getElementById(Retorno).innerHTML = ObjetoAjax[Retorno].responseText;
 			document.body.style.cursor = "default";
-            Atualizar[Retorno] = setTimeout(function(){
-                Ajax(PageTarget, Retorno, Dados, Refresh);
-            }, 30*1000);
+            if(typeof Refresh != "undefined"){
+                Atualizar[Retorno] = setTimeout(function (){
+                    Ajax(PageTarget, Retorno, Dados, Refresh);
+                }, 30*1000);
+            }
 		}
 	}
 	if(Dados == null){

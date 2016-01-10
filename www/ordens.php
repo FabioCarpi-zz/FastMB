@@ -26,13 +26,13 @@ require_once("autovenda.php");?>
                 <td style="text-align:center;"><?php echo $_SESSION["Config"]["Ordens"][$id] = $linha["price"];?></td>
                 <td style="text-align:center;"><?php
                     if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["vendacent"])){
-                        echo $_SESSION["Config"]["Auto"]["btc"][$id]["vendacent"]."% - "; 
+                        echo $_SESSION["Config"]["Auto"]["btc"][$id]["vendacent"]."% "; 
                         echo $_SESSION["Config"]["Auto"]["btc"][$id]["venda"];
                     }?>
                 </td>
                 <td style="text-align:center;"><?php
                     if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["vendacent"])){
-                        echo $_SESSION["Config"]["Auto"]["btc"][$id]["compracent"]."% - "; 
+                        echo $_SESSION["Config"]["Auto"]["btc"][$id]["compracent"]."% "; 
                         echo $_SESSION["Config"]["Auto"]["btc"][$id]["compra"];
                     }?>
                 </td>
@@ -52,13 +52,13 @@ require_once("autovenda.php");?>
                 <td style="text-align:center;"><?php echo $_SESSION["Config"]["Ordens"][$id] = $linha["price"];?></td>
                 <td style="text-align:center;"><?php
                     if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["vendacent"])){
-                        echo $_SESSION["Config"]["Auto"]["ltc"][$id]["vendacent"]."% - "; 
+                        echo $_SESSION["Config"]["Auto"]["ltc"][$id]["vendacent"]."% "; 
                         echo $_SESSION["Config"]["Auto"]["ltc"][$id]["venda"];
                     }?>
                 </td>
                 <td style="text-align:center;"><?php
                     if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["vendacent"])){
-                        echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compracent"]."% - "; 
+                        echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compracent"]."% "; 
                         echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compra"];
                     }?>
 

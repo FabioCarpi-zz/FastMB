@@ -1,4 +1,4 @@
-<?php // Versão 1.2.1 de 10/01/2016
+<?php // Versão 1.2.2 de 10/01/2016
 ini_set("error_reporting", E_ALL);
 ini_set("html_errors", true);
 ini_set("display_errors", true);
@@ -37,14 +37,14 @@ function MB($Comando){
 }
 
 function ConfigLoad(){
-    if(!file_exists("db.dat")){
-        file_put_contents("db.dat", null);
+    if(!file_exists("db.json")){
+        file_put_contents("db.json", null);
         $_SESSION["Config"]["Auto"] = array();
     }else{
-        $_SESSION["Config"]["Auto"] = json_decode(file_get_contents("db.dat"), true);
+        $_SESSION["Config"]["Auto"] = json_decode(file_get_contents("db.json"), true);
     }
 }
 
 function ConfigSave(){
-    file_put_contents("db.dat", json_encode($_SESSION["Config"]["Auto"]));
+    file_put_contents("db.json", json_encode($_SESSION["Config"]["Auto"], JSON_PRETTY_PRINT));
 }

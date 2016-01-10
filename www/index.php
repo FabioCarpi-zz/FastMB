@@ -29,9 +29,9 @@ if(isset($_GET["action"])){
                     $_SESSION["Config"]["Auto"][$_POST["pair"]][key($dados["return"])] = array(
                         "tipo" => $_POST["tipo"],
                         "vendacent" => $_POST["autovenda"],
-                        "venda" => $_POST["valor"] + ($_POST["valor"] * ($_POST["autovenda"] / 100)),
+                        "venda" => number_format($temp = $_POST["valor"] + (($_POST["valor"] * $_POST["autovenda"]) / 100), 5),
                         "compracent" => $_POST["autocompra"],
-                        "compra" => $_POST["valor"] + ($_POST["valor"] * ($_POST["autocompra"] / 100))
+                        "compra" => number_format($temp - (($temp * $_POST["autocompra"]) / 100), 5)
                     );
                     ConfigSave();
                 }
@@ -90,10 +90,11 @@ if(isset($_GET["action"])){
                             document.forme.volume.value=document.getElementById('ltc').innerHTML;
                         }"><br>
                     Auto venda: <input type="text" name="autovenda" size="2" onkeyup="
-                        document.forme.autovenda2.value = parseFloat(document.forme.valor.value) + (document.forme.valor.value * document.forme.autovenda.value / 100);
+                        document.forme.autovenda2.value = parseFloat(document.forme.valor.value) + ((document.forme.valor.value * document.forme.autovenda.value) / 100);
                     "><input type="text" name="autovenda2" size="7" disabled><br>
                     Auto compra: <input type="text" name="autocompra" size="2" onkeyup="
-                        document.forme.autocompra2.value = parseFloat(document.forme.autovenda2.value) - (document.forme.autovenda2.value * document.forme.autocompra.value / 100);
+                        num = parseFloat(document.forme.autovenda2.value) - (document.forme.autovenda2.value * document.forme.autocompra.value / 100);
+                        document.forme.autocompra2.value = num.toFixed(5);
                     "><input type="text" name="autocompra2" size="7" disabled><br>
                     <input type="button" value=" Criar " onclick="Ajax('index.php?action=New2','AjaxOrdens',
                         'pair='+document.forme.pair.value+
