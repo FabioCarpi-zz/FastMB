@@ -1,4 +1,4 @@
-<?php // Versão 1.1.6 de 09/01/2016
+<?php // Versão 1.2 de 10/01/2016
 ini_set("error_reporting", E_ALL);
 ini_set("html_errors", true);
 ini_set("display_errors", true);
@@ -45,6 +45,5 @@ function ConfigLoad(){
 }
 
 function ConfigSave(){
-
     file_put_contents("db.dat", json_encode($_SESSION["Config"]["Auto"]));
 }

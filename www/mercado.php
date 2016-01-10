@@ -1,5 +1,5 @@
 <?php
-require("system.php");
+require_once("system.php");
 
 if($_GET["pair"] == "btc"){
     $temp = "orderbook";

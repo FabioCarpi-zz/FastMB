@@ -1,5 +1,5 @@
 <?php
-require("system.php");
+require_once("system.php");
 
 function cmp($A, $B){
    if($A["created"] == $B["created"]){
@@ -84,4 +84,4 @@ if(isset($_GET["action"])){
     </table><?php
 }
 
-require("foot.php");
+require_once("foot.php");

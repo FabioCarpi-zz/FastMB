@@ -1,4 +1,5 @@
 function Calcular(){
+    var num;
     num = document.simulador.reais.value / document.simulador.compra.value;
     document.simulador.bitcoins.value = num.toFixed(8);
     num = document.simulador.bitcoins.value * 0.003;
@@ -20,6 +21,7 @@ function Calcular(){
 }
 
 function Calcular2(){
+    var num;
     num = document.simulador.vendido.value * document.simulador.venda.value;
     document.simulador.saldo.value = num.toFixed(5);
     num = document.simulador.saldo.value - document.simulador.reais.value;

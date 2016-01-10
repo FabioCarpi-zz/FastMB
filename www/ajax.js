@@ -11,9 +11,6 @@ function Ajax(Url, Retorno, Dados, Refresh){
         }else{
             PageTarget = Refresh;
         }
-        Atualizar[Retorno] = setTimeout(function(){
-            Ajax(PageTarget, Retorno, Dados, Refresh);
-        }, 30*1000);
     }
     if(typeof ObjetoAjax[Retorno] == "undefined"){
         try{
@@ -36,6 +33,9 @@ function Ajax(Url, Retorno, Dados, Refresh){
 		}else if(ObjetoAjax[Retorno].readyState == 4 && (ObjetoAjax[Retorno].status == 200 || ObjetoAjax[Retorno].status == 500)){
 			document.getElementById(Retorno).innerHTML = ObjetoAjax[Retorno].responseText;
 			document.body.style.cursor = "default";
+            Atualizar[Retorno] = setTimeout(function(){
+                Ajax(PageTarget, Retorno, Dados, Refresh);
+            }, 30*1000);
 		}
 	}
 	if(Dados == null){

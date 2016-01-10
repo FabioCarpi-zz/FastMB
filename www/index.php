@@ -1,24 +1,24 @@
 <?php
-require("system.php");
-require("head.php");
+require_once("system.php");
 
 if(isset($_GET["action"])){
     if($_GET["action"] == "Del"){
-        require("head.php");
+        require_once("head.php");
         $dados = Obter("CancelOrder&pair=".$_GET["pair"]."_brl&order_id=".$_GET["id"]);?>
         <div style="text-align:center;"><?php
             if($dados["success"]){
                 echo "Ordem excluída com êxito<br>";
-                unset($_SESSION["Config"]["Auto"][$_GET["id"]]);
+                unset($_SESSION["Config"]["Auto"][$_GET["pair"]][$_GET["id"]]);
+                ConfigSave();
             }else{
                 echo $dados["error"]."<br>";
             }?>
-            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','Ordens');
+            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_GET["pair"];?>','AjaxOrdens',null,'self');
+                Ajax('mercado.php?pair=<?php echo $_GET["pair"];?>','AjaxMercado',null,'self');
                 Ajax('index.php?action=Saldo','AjaxSaldo',null,'self');">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "New2"){
-        require("head.php");
         $dados = Obter("Trade&pair=".$_POST["pair"]."_brl&type=".$_POST["tipo"].
             "&volume=".str_replace(",", ".", $_POST["volume"]).
             "&price=".str_replace(",", ".", $_POST["valor"]));?>
@@ -26,9 +26,7 @@ if(isset($_GET["action"])){
             if($dados["success"]){
                 echo "Ordem criada com êxito<br>";
                 if($_POST["autovenda"] != ""){
-                    ConfigLoad();
-                    $_SESSION["Config"]["Auto"][key($dados["return"])] = array(
-                        "pair" => $dados["return"][key($dados["return"])]["pair"],
+                    $_SESSION["Config"]["Auto"][$_POST["pair"]][key($dados["return"])] = array(
                         "tipo" => $_POST["tipo"],
                         "vendacent" => $_POST["autovenda"],
                         "venda" => $_POST["valor"] + ($_POST["valor"] * ($_POST["autovenda"] / 100))
@@ -38,7 +36,8 @@ if(isset($_GET["action"])){
             }else{
                 echo $dados["error"]."<br>";
             }?>
-            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','Ordens');
+            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','AjaxOrdens',null,'self');
+                Ajax('mercado.php?pair=<?php echo $_POST["pair"];?>','AjaxMercado',null,'self');
                 Ajax('index.php?action=Saldo','AjaxSaldo',null,'self');">Atualizar</a>
         </div><?php
 
@@ -48,7 +47,8 @@ if(isset($_GET["action"])){
         BTC: <span id="btc"><?php echo $dados["return"]["funds"]["btc"];?></span><br>
         LTC: <span id="ltc"><?php echo $dados["return"]["funds"]["ltc"];?></span><?php
     }
-}else{?>
+}else{
+    require_once("head.php");?>
     <table class="Center" style="width:100%">
         <tr>
             <td style="text-align:center;width:300px;" id="AjaxSaldo">
@@ -87,9 +87,11 @@ if(isset($_GET["action"])){
                         }else if(document.forme.tipo.value == 'sell' && document.forme.pair.value == 'ltc'){
                             document.forme.volume.value=document.getElementById('ltc').innerHTML;
                         }"><br>
-                    Auto venda: <input type="text" name="autovenda" size="2"><br>
+                    Auto venda: <input type="text" name="autovenda" size="2" onkeyup="
+                        document.forme.autovenda2.value = parseFloat(document.forme.valor.value) + (document.forme.valor.value * document.forme.autovenda.value / 100);
+                    "><input type="text" name="autovenda2" size="7" disabled><br>
                     Auto compra: <input type="text" name="autocompra" size="2"><br>
-                    <input type="button" value=" Criar " onclick="Ajax('index.php?action=New2','Ordens',
+                    <input type="button" value=" Criar " onclick="Ajax('index.php?action=New2','AjaxOrdens',
                         'pair='+document.forme.pair.value+
                         '&tipo='+document.forme.tipo.value+
                         '&valor='+document.forme.valor.value+
@@ -104,9 +106,12 @@ if(isset($_GET["action"])){
         </tr>
         <tr>
             <td style="text-align:center;" colspan="2">
-                <span id="Ordens">
+                <span id="AjaxOrdens">
                     <script>
-                        Ajax("ordens.php?pair=btc", "Ordens", null, "self");
+                        setInterval(function(){
+                            document.getElementById("TimerOrdens").innerHTML--;
+                        }, 1000);
+                        Ajax("ordens.php?pair=btc", "AjaxOrdens", null, "self");
                     </script>
                 </span>
             </td>
@@ -120,4 +125,4 @@ if(isset($_GET["action"])){
         </tr>
     </table><?php
 }
-require("foot.php");
+require_once("foot.php");
