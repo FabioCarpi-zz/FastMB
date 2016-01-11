@@ -6,8 +6,9 @@ b9324decf6c088dbb7a2e5e6fe00d2d5 C:\GitHub\FastMB\www\del.gif
 a92143d61f3400c353ad3bf7c73b64d9 C:\GitHub\FastMB\www\foot.php
 d0e45e38237ebc5fea80bf58287ef379 C:\GitHub\FastMB\www\global.css
 823c77b4e18309b453347cf0a45ed2b1 C:\GitHub\FastMB\www\head.php
-bdf26ea5a463bd07c808c08646810565 C:\GitHub\FastMB\www\index.php
+6bd8a4fe66954411c3ab7d565a15f0a6 C:\GitHub\FastMB\www\index.php
 81bd7554a9ccc5af76a6969756345904 C:\GitHub\FastMB\www\mercado.php
 f65c421b5c4b22ce7e57168591b6d207 C:\GitHub\FastMB\www\ordens.php
 41b415da75a36ec70a97ad01cf34a3d4 C:\GitHub\FastMB\www\simulador.php
 2ab4b094b03b384bbcb3e52c1f526c0f C:\GitHub\FastMB\www\system.php
+8371089c77aa43d08b8d1f4b53591993 C:\GitHub\FastMB\www\versao.txt

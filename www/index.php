@@ -60,6 +60,7 @@ if(isset($_GET["action"])){
                 </script>
             </td>
             <td style="text-align:center;">
+                Versão <?php echo file_get_contents("versao.txt");?> de <?php echo file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/www/versao.txt");?><br>
                 <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxMercado',null,true);">Bitcoins</a> -
                 <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxMercado',null,true);">Litecoin</a><br> 
                 <a href="#" onclick="Ajax('concluidas.php','AjaxMercado');">Ordens concluídas</a> - 
