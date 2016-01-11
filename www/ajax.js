@@ -46,7 +46,7 @@ function Executar(Local){
     var Comando, Texto = document.getElementById(Local).innerHTML;
     while(Texto.indexOf("<script>") >= 0){
         Comando = Texto.substring(Texto.indexOf("<script>") + 8, Texto.indexOf("</script>"));
-        eval(Comando);
+        window.eval(Comando);
         Texto = Texto.substring(Texto.indexOf("</script>") + 9);
     }
 }

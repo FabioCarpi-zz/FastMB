@@ -1,6 +1,7 @@
 <script>
+    var num;
+    
     function Calcular(){
-        var num;
         num = document.simulador.reais.value / document.simulador.compra.value;
         document.simulador.bitcoins.value = num.toFixed(8);
         num = document.simulador.bitcoins.value * 0.003;
@@ -18,17 +19,16 @@
         num = document.simulador.saldo.value - document.simulador.reais.value;
         document.simulador.ganho.value = num.toFixed(5);
         num = (document.simulador.saldo.value - document.simulador.reais.value) * 100 / document.simulador.reais.value;
-        document.simulador.lucro.value = num.toFixed(2) + '%';
+        document.simulador.lucro.value = num.toFixed(2) + "%";
     }
 
     function Calcular2(){
-        var num;
         num = document.simulador.vendido.value * document.simulador.venda.value;
         document.simulador.saldo.value = num.toFixed(5);
         num = document.simulador.saldo.value - document.simulador.reais.value;
         document.simulador.ganho.value = num.toFixed(5);
         num = (document.simulador.saldo.value - document.simulador.reais.value) * 100 / document.simulador.reais.value;
-        document.simulador.lucro.value = num.toFixed(2) + '%';
+        document.simulador.lucro.value = num.toFixed(2) + "%";
     }
 </script>
 

@@ -32,7 +32,7 @@ Update("Trades".$_GET["pair"]);?>
                 $dados = array_slice($_SESSION["Config"][$_GET["pair"]]["Ordens"]["asks"], 0, 50);
                 $total = 0;
                 foreach($dados as $id => $linha){?>
-                    <tr title="1% = <?php echo number_format($linha[0] * 1.01, 5);
+                    <tr title="1% = <?php echo number_format($linha[0] / 1.01, 5);
                     ?>&#13;Ordens na frente: <?php echo $id;
                     ?>&#13;Volume na frente: <?php echo $total;?>"<?php
                         if(isset($_SESSION["Config"]["Ordens"]) and in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Config"]["Ordens"], true)){

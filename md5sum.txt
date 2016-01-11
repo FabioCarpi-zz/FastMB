@@ -1,4 +1,4 @@
-045403a5a8c223947048c6849e67e14f C:\GitHub\FastMB\www\ajax.js
+31aa7f2dad5c2364247b6f40dcd89104 C:\GitHub\FastMB\www\ajax.js
 b09471148fe947c8ab6d5700c22e775b C:\GitHub\FastMB\www\autovenda.php
 6840f4a92e085290d89159cf806d0a61 C:\GitHub\FastMB\www\concluidas.php
 6b37b4778978b73047e1d0d4f1209e85 C:\GitHub\FastMB\www\config.php
@@ -7,8 +7,8 @@ a92143d61f3400c353ad3bf7c73b64d9 C:\GitHub\FastMB\www\foot.php
 d0e45e38237ebc5fea80bf58287ef379 C:\GitHub\FastMB\www\global.css
 823c77b4e18309b453347cf0a45ed2b1 C:\GitHub\FastMB\www\head.php
 6bd8a4fe66954411c3ab7d565a15f0a6 C:\GitHub\FastMB\www\index.php
-81bd7554a9ccc5af76a6969756345904 C:\GitHub\FastMB\www\mercado.php
+d5379bbcc65af428d8582162f3b4baed C:\GitHub\FastMB\www\mercado.php
 f65c421b5c4b22ce7e57168591b6d207 C:\GitHub\FastMB\www\ordens.php
-41b415da75a36ec70a97ad01cf34a3d4 C:\GitHub\FastMB\www\simulador.php
-2ab4b094b03b384bbcb3e52c1f526c0f C:\GitHub\FastMB\www\system.php
-8371089c77aa43d08b8d1f4b53591993 C:\GitHub\FastMB\www\versao.txt
+07244f10abed2121a35ea5c97487951a C:\GitHub\FastMB\www\simulador.php
+84b29cd374989ccd532e3571eae6cdab C:\GitHub\FastMB\www\system.php
+8733519a60fd49dee81fe221b6da28b5 C:\GitHub\FastMB\www\versao.txt

@@ -1,4 +1,4 @@
-<?php // Versão 1.2.5 de 10/01/2016
+<?php
 ini_set("error_reporting", E_ALL);
 ini_set("html_errors", true);
 ini_set("display_errors", true);
@@ -20,7 +20,6 @@ function PhpLiveImport($nome){
 
 function MB($Comando){
     $msg = "method=".$Comando."&tonce=".time();
-    
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://www.mercadobitcoin.com.br/tapi/");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
