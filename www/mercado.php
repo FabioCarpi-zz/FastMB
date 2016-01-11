@@ -1,6 +1,7 @@
 <?php
 require_once("system.php");
-Update();?>
+Update("Ordens".$_GET["pair"]);
+Update("Trades".$_GET["pair"]);?>
 
 <table class="Center">
     <tr>
@@ -8,9 +9,9 @@ Update();?>
             <table border="1">
                 <tr><th colspan="2">Ordens de compra</th></tr>
                 <tr><th>Quantia</th><th>Valor</th></tr><?php
-                $dados = array_slice($_SESSION["Config"]["btc"]["Ordens"]["bids"], 0, 50);
-                foreach($dados as $linha){?>
-                    <tr title="1% = <?php echo $linha[0] * 1.01;?>"<?php
+                $dados = array_slice($_SESSION["Config"][$_GET["pair"]]["Ordens"]["bids"], 0, 50);
+                foreach($dados as $id => $linha){?>
+                    <tr title="1% = <?php echo number_format($linha[0] * 1.01, 5);?>&#13;Ordens na frente: <?php echo $id;?>"<?php
                         if(isset($_SESSION["Config"]["Ordens"]) and in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Config"]["Ordens"], true)){
                             echo " style=\"background-color:#99ccff\"";
                             $find = true;
@@ -25,9 +26,10 @@ Update();?>
             <table border="1">
                 <tr><th colspan="2">Ordens de venda</th></tr>
                 <tr><th>Quantia</th><th>Valor</th></tr><?php
-                $dados = array_slice($_SESSION["Config"]["btc"]["Ordens"]["asks"], 0, 50);
-                foreach($dados as $linha){?>
-                    <tr<?php if(isset($_SESSION["Config"]["Ordens"]) and in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Config"]["Ordens"], true)){
+                $dados = array_slice($_SESSION["Config"][$_GET["pair"]]["Ordens"]["asks"], 0, 50);
+                foreach($dados as $id => $linha){?>
+                    <tr title="1% = <?php echo number_format($linha[0] / 1.01, 5);?>&#13;Ordens na frente: <?php echo $id;?>"<?php
+                        if(isset($_SESSION["Config"]["Ordens"]) and in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Config"]["Ordens"], true)){
                         echo " style=\"background-color:#99ccff\"";}?>>
                         <td><?php echo $linha[1];?></td>
                         <td><?php echo $linha[0];?></td>
@@ -40,8 +42,8 @@ Update();?>
                 <tr><th colspan="4">Ordens executadas</th></tr>
                 <tr><th>Hora</th><th>Tipo</th><th>Quantia</th><th>Valor</th></tr><?php
                 $dados = array_slice($_SESSION["Config"][$_GET["pair"]]["Trades"], 0, 50);
-                foreach($dados as $linha){?>
-                    <tr title="Tempo: <?php echo (time()-$linha["date"]) / 60;?> minutos">
+                foreach($dados as $id => $linha){?>
+                    <tr title="Tempo: <?php echo (time()-$linha["date"]) / 60;?> minutos&#13;Ordens na frente: <?php echo $id;?>">
                         <td><?php echo date("d/m/Y H:i:s", $linha["date"]);?></td>
                         <td><?php echo $linha["type"] == "buy"?
                             "<span style=\"color:#0a0\">Compra</span>":
@@ -54,3 +56,8 @@ Update();?>
         </td>
     </tr>
 </table>
+<script>
+    setTimeout(function (){
+        Ajax("mercado.php?pair=<?php echo $_GET["pair"];?>", "AjaxMercado");
+    }, 30 * 1000);
+</script>

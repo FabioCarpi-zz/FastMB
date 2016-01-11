@@ -10,7 +10,7 @@
         "log_file": ""
     },
     "main_window": {
-        "title": "Mercado Bitcoin",
+        "title": "FastMB",
         "icon": "favicon.ico",
         "default_size": [1024, 768],
         "minimum_size": [800, 600],
@@ -22,7 +22,7 @@
     },
     "popup_window": {
         "icon": "favicon.ico",
-        "fixed_title": "Mercado Bitcoin",
+        "fixed_title": "FastMB",
         "center_relative_to_parent": true,
         "default_size": [1024, 768]
     },

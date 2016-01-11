@@ -1,8 +1,9 @@
 <?php
 require_once("system.php");
 require_once("autovenda.php");
-Update();?>
+Update("MyOrdens");
 
+$_SESSION["Config"]["Ordens"] = array();?>
 <table border="1" class="Center">
     <tr>
         <td id="TimerOrdens">30</td>
@@ -57,3 +58,8 @@ Update();?>
         </tr><?php
     }?>
 </table>
+<script>
+    setTimeout(function (){
+        Ajax("ordens.php?pair=<?php echo $_GET["pair"];?>", "AjaxOrdens");
+    }, 30 * 1000);
+</script>

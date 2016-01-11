@@ -1,4 +1,4 @@
-<?php // Versão 1.2.3 de 10/01/2016
+<?php // Versão 1.2.4 de 10/01/2016
 ini_set("error_reporting", E_ALL);
 ini_set("html_errors", true);
 ini_set("display_errors", true);
@@ -50,29 +50,39 @@ function ConfigSave(){
     file_put_contents("db.json", json_encode($_SESSION["Config"]["Auto"], JSON_PRETTY_PRINT));
 }
 
-function Update(){
-    @$dados = json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/orderbook"), true);
-    if(!is_null($dados)){
-        $_SESSION["Config"]["btc"]["Ordens"] = $dados;
+function Update($Tipo = null){
+    if($Tipo == null or strtolower($Tipo) == strtolower("OrdensBtc")){
+        @$dados = json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/orderbook"), true);
+        if(!is_null($dados)){
+            $_SESSION["Config"]["btc"]["Ordens"] = $dados;
+        }
     }
-    @$dados = json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/orderbook_litecoin"), true);
-    if(!is_null($dados)){
-        $_SESSION["Config"]["ltc"]["Ordens"] = $dados;
+    if($Tipo == null or strtolower($Tipo) == strtolower("OrdensLtc")){
+        @$dados = json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/orderbook_litecoin"), true);
+        if(!is_null($dados)){
+            $_SESSION["Config"]["ltc"]["Ordens"] = $dados;
+        }
     }
-    @$dados = array_reverse(json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/trades/".strtotime("-12 hours")), true));
-    if(!is_null($dados)){
-        $_SESSION["Config"]["btc"]["Trades"] = $dados;
+    if($Tipo == null or strtolower($Tipo) == strtolower("TradesBtc")){
+        @$dados = array_reverse(json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/trades/".strtotime("-12 hours")), true));
+        if(!is_null($dados)){
+            $_SESSION["Config"]["btc"]["Trades"] = $dados;
+        }
     }
-    @$dados = array_reverse(json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/trades_litecoin/".strtotime("-12 hours")), true));
-    if(!is_null($dados)){
-        $_SESSION["Config"]["ltc"]["Trades"] = $dados;
+    if($Tipo == null or strtolower($Tipo) == strtolower("TradesLtc")){
+        @$dados = array_reverse(json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/trades_litecoin/".strtotime("-12 hours")), true));
+        if(!is_null($dados)){
+            $_SESSION["Config"]["ltc"]["Trades"] = $dados;
+        }
     }
-    @$dados = MB("OrderList&pair=btc_brl&status=active");
-    if(!is_null($dados)){
-        $_SESSION["Config"]["btc"]["MyOrdens"] = $dados["return"];
-    }
-    @$dados = MB("OrderList&pair=ltc_brl&status=active");
-    if(!is_null($dados)){
-        $_SESSION["Config"]["ltc"]["MyOrdens"] = $dados["return"];
+    if($Tipo == null or $Tipo == "MyOrdens"){
+        @$dados = MB("OrderList&pair=btc_brl&status=active");
+        if(!is_null($dados)){
+            $_SESSION["Config"]["btc"]["MyOrdens"] = $dados["return"];
+        }
+        @$dados = MB("OrderList&pair=ltc_brl&status=active");
+        if(!is_null($dados)){
+            $_SESSION["Config"]["ltc"]["MyOrdens"] = $dados["return"];
+        }
     }
 }

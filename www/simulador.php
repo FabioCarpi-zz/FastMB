@@ -1,16 +1,50 @@
+<script>
+    function Calcular(){
+        var num;
+        num = document.simulador.reais.value / document.simulador.compra.value;
+        document.simulador.bitcoins.value = num.toFixed(8);
+        num = document.simulador.bitcoins.value * 0.003;
+        document.simulador.taxac.value = num.toFixed(8);
+        num = document.simulador.bitcoins.value - document.simulador.taxac.value;
+        document.simulador.comprado.value = num.toFixed(8);
+        num = document.simulador.compra.value * 1.01;
+        document.simulador.venda.value = num.toFixed(5);
+        num = document.simulador.comprado.value * 0.003;
+        document.simulador.taxav.value = num.toFixed(8);
+        num = document.simulador.comprado.value - document.simulador.taxav.value;
+        document.simulador.vendido.value = num.toFixed(8);
+        num = document.simulador.vendido.value * document.simulador.venda.value;
+        document.simulador.saldo.value = num.toFixed(5);
+        num = document.simulador.saldo.value - document.simulador.reais.value;
+        document.simulador.ganho.value = num.toFixed(5);
+        num = (document.simulador.saldo.value - document.simulador.reais.value) * 100 / document.simulador.reais.value;
+        document.simulador.lucro.value = num.toFixed(2) + '%';
+    }
+
+    function Calcular2(){
+        var num;
+        num = document.simulador.vendido.value * document.simulador.venda.value;
+        document.simulador.saldo.value = num.toFixed(5);
+        num = document.simulador.saldo.value - document.simulador.reais.value;
+        document.simulador.ganho.value = num.toFixed(5);
+        num = (document.simulador.saldo.value - document.simulador.reais.value) * 100 / document.simulador.reais.value;
+        document.simulador.lucro.value = num.toFixed(2) + '%';
+    }
+</script>
+
 <br><br>
 <form name="simulador">
     <table class="Center">
         <tr>
             <td>Reais:</td>
-            <td><input type="text" name="reais" size="13" onkeyup="Calcular()"></td>
+            <td><input type="text" name="reais" size="13" onkeyup="Calcular()" onchange="Calcular()"></td>
             <td><input type="button" value="&lt;&lt;" onclick="
                 document.simulador.reais.value = document.getElementById('brl').innerHTML;
             "></td>
         </tr>
         <tr>
             <td>Valor pretendido:</td>
-            <td><input type="text" name="compra" size="13" onkeyup="Calcular()">
+            <td><input type="text" name="compra" size="13" onkeyup="Calcular()" onchange="Calcular()">
             </td>
             <?php $dados = json_decode(file_get_contents("https://www.mercadobitcoin.net/api/ticker/"), true);?>
             <td><input type="button" value="&lt;&lt;" onclick="
@@ -36,7 +70,7 @@
         </tr>
         <tr>
             <td>Valor pretendido:</td>
-            <td><input type="text" name="venda" size="13" onkeyup="Calcular2()"></td>
+            <td><input type="text" name="venda" size="13" onkeyup="Calcular2()" onchange="Calcular2()"></td>
             <td><input type="button" value="&lt;&lt;" onclick="
                 document.simulador.venda.value = <?php echo $dados["ticker"]["last"];?>;
                 Calcular2();

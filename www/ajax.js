@@ -1,15 +1,6 @@
 var ObjetoAjax = [], Atualizar = [];
 
-function Ajax(Url, Retorno, Dados, Refresh){
-    var PageTarget;
-    clearTimeout(Atualizar[Retorno]);
-    if(typeof Refresh != "undefined"){
-        if(Refresh == "self"){
-            PageTarget = Url;
-        }else{
-            PageTarget = Refresh;
-        }
-    }
+function Ajax(Url, Retorno, Dados){
     if(typeof ObjetoAjax[Retorno] == "undefined"){
         try{
             ObjetoAjax[Retorno] = new ActiveXObject("Msxml2.XMLHTTP");
@@ -30,12 +21,8 @@ function Ajax(Url, Retorno, Dados, Refresh){
 			document.body.style.cursor = "default";
 		}else if(ObjetoAjax[Retorno].readyState == 4 && (ObjetoAjax[Retorno].status == 200 || ObjetoAjax[Retorno].status == 500)){
 			document.getElementById(Retorno).innerHTML = ObjetoAjax[Retorno].responseText;
+            Executar(Retorno);
 			document.body.style.cursor = "default";
-            if(typeof Refresh != "undefined"){
-                Atualizar[Retorno] = setTimeout(function (){
-                    Ajax(PageTarget, Retorno, Dados, Refresh);
-                }, 30*1000);
-            }
 		}
 	}
 	if(Dados == null){
@@ -47,4 +34,13 @@ function Ajax(Url, Retorno, Dados, Refresh){
 		ObjetoAjax[Retorno].setRequestHeader("Connection", "close");
 	}
 	ObjetoAjax[Retorno].send(Dados);
+}
+
+function Executar(Local){
+    var Comando, Texto = document.getElementById(Local).innerHTML;
+    while(Texto.indexOf("<script>") >= 0){
+        Comando = Texto.substring(Texto.indexOf("<script>") + 8, Texto.indexOf("</script>"));
+        eval(Comando);
+        Texto = Texto.substring(Texto.indexOf("</script>") + 9);
+    }
 }
