@@ -1,6 +1,7 @@
-var ObjetoAjax = [], Atualizar = [];
+var ObjetoAjax = [], Atualizacoes = [];
 
-function Ajax(Url, Retorno, Dados){
+function Ajax(Url, Retorno, Dados, Atualizar){
+    clearTimeout(Atualizacoes[Retorno]);
     if(typeof ObjetoAjax[Retorno] == "undefined"){
         try{
             ObjetoAjax[Retorno] = new ActiveXObject("Msxml2.XMLHTTP");
@@ -21,6 +22,11 @@ function Ajax(Url, Retorno, Dados){
 			document.body.style.cursor = "default";
 		}else if(ObjetoAjax[Retorno].readyState == 4 && (ObjetoAjax[Retorno].status == 200 || ObjetoAjax[Retorno].status == 500)){
 			document.getElementById(Retorno).innerHTML = ObjetoAjax[Retorno].responseText;
+            if(Atualizar == true){
+                Atualizacoes[Retorno] = setTimeout(function (){
+                    Ajax(Url, Retorno, null, true);
+                }, 30 * 1000);
+            }
             Executar(Retorno);
 			document.body.style.cursor = "default";
 		}

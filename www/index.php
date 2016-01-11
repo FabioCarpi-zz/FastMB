@@ -13,9 +13,8 @@ if(isset($_GET["action"])){
             }else{
                 echo $dados["error"]."<br>";
             }?>
-            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_GET["pair"];?>','AjaxOrdens');
-                Ajax('mercado.php?pair=<?php echo $_GET["pair"];?>','AjaxMercado');
-                Ajax('index.php?action=Saldo','AjaxSaldo');">Atualizar</a>
+            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_GET["pair"];?>','AjaxOrdens',null,true);
+                Ajax('index.php?action=Saldo','AjaxSaldo',null,true);">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "New2"){
@@ -38,9 +37,8 @@ if(isset($_GET["action"])){
             }else{
                 echo $dados["error"]."<br>";
             }?>
-            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','AjaxOrdens');
-                Ajax('mercado.php?pair=<?php echo $_POST["pair"];?>','AjaxMercado');
-                Ajax('index.php?action=Saldo','AjaxSaldo');">Atualizar</a>
+            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_POST["pair"];?>','AjaxOrdens',null,true);
+                Ajax('index.php?action=Saldo','AjaxSaldo',null,true);">Atualizar</a>
         </div><?php
 
     }elseif($_GET["action"] == "Saldo"){
@@ -50,12 +48,7 @@ if(isset($_GET["action"])){
         }?>
         BRL: <span id="brl"><?php echo $_SESSION["Config"]["Saldos"]["brl"];?></span><br>
         BTC: <span id="btc"><?php echo $_SESSION["Config"]["Saldos"]["btc"];?></span><br>
-        LTC: <span id="ltc"><?php echo $_SESSION["Config"]["Saldos"]["ltc"];?></span>
-        <script>
-            setTimeout(function (){
-                Ajax("index.php?action=Saldo", "AjaxSaldo");
-            }, 30 * 1000);
-        </script><?php
+        LTC: <span id="ltc"><?php echo $_SESSION["Config"]["Saldos"]["ltc"];?></span><?php
     }
 }else{
     require_once("head.php");?>
@@ -63,12 +56,12 @@ if(isset($_GET["action"])){
         <tr>
             <td style="text-align:center;width:300px;" id="AjaxSaldo">
                 <script>
-                    Ajax("index.php?action=Saldo", "AjaxSaldo");
+                    Ajax("index.php?action=Saldo", "AjaxSaldo", null, true);
                 </script>
             </td>
             <td style="text-align:center;">
-                <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxMercado');">Bitcoins</a> -
-                <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxMercado');">Litecoin</a><br> 
+                <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxMercado',null,true);">Bitcoins</a> -
+                <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxMercado',null,true);">Litecoin</a><br> 
                 <a href="#" onclick="Ajax('concluidas.php','AjaxMercado');">Ordens concluídas</a> - 
                 <a href="#" onclick="Ajax('simulador.php','AjaxMercado')">Simulador</a>
             </td>
@@ -119,7 +112,7 @@ if(isset($_GET["action"])){
             <td style="text-align:center;" colspan="2">
                 <span id="AjaxOrdens">
                     <script>
-                        Ajax("ordens.php?pair=btc", "AjaxOrdens");
+                        Ajax("ordens.php?pair=btc", "AjaxOrdens", null, true);
                         setInterval(function(){
                             document.getElementById("TimerOrdens").innerHTML--;
                         }, 1000);
@@ -130,7 +123,7 @@ if(isset($_GET["action"])){
         <tr>
             <td style="text-align:center;vertical-align:top;" colspan="3" id="AjaxMercado">
                 <script>
-                    Ajax("mercado.php?pair=btc", "AjaxMercado");
+                    Ajax("mercado.php?pair=btc", "AjaxMercado", null, true);
                 </script>
             </td>
         </tr>

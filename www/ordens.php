@@ -58,8 +58,3 @@ $_SESSION["Config"]["Ordens"] = array();?>
         </tr><?php
     }?>
 </table>
-<script>
-    setTimeout(function (){
-        Ajax("ordens.php?pair=<?php echo $_GET["pair"];?>", "AjaxOrdens");
-    }, 30 * 1000);
-</script>

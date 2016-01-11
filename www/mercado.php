@@ -10,15 +10,18 @@ Update("Trades".$_GET["pair"]);?>
                 <tr><th colspan="2">Ordens de compra</th></tr>
                 <tr><th>Quantia</th><th>Valor</th></tr><?php
                 $dados = array_slice($_SESSION["Config"][$_GET["pair"]]["Ordens"]["bids"], 0, 50);
+                $total = 0;
                 foreach($dados as $id => $linha){?>
-                    <tr title="1% = <?php echo number_format($linha[0] * 1.01, 5);?>&#13;Ordens na frente: <?php echo $id;?>"<?php
+                    <tr title="1% = <?php echo number_format($linha[0] * 1.01, 5);
+                    ?>&#13;Ordens na frente: <?php echo $id;
+                    ?>&#13;Volume na frente: <?php echo $total;?>"<?php
                         if(isset($_SESSION["Config"]["Ordens"]) and in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Config"]["Ordens"], true)){
                             echo " style=\"background-color:#99ccff\"";
-                            $find = true;
                         }?>>
                         <td><?php echo $linha[1];?></td>
                         <td><?php echo $linha[0];?></td>
                     </tr><?php
+                    $total += $linha[1];
                 }?>
             </table>
         </td>
@@ -27,13 +30,18 @@ Update("Trades".$_GET["pair"]);?>
                 <tr><th colspan="2">Ordens de venda</th></tr>
                 <tr><th>Quantia</th><th>Valor</th></tr><?php
                 $dados = array_slice($_SESSION["Config"][$_GET["pair"]]["Ordens"]["asks"], 0, 50);
+                $total = 0;
                 foreach($dados as $id => $linha){?>
-                    <tr title="1% = <?php echo number_format($linha[0] / 1.01, 5);?>&#13;Ordens na frente: <?php echo $id;?>"<?php
+                    <tr title="1% = <?php echo number_format($linha[0] * 1.01, 5);
+                    ?>&#13;Ordens na frente: <?php echo $id;
+                    ?>&#13;Volume na frente: <?php echo $total;?>"<?php
                         if(isset($_SESSION["Config"]["Ordens"]) and in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Config"]["Ordens"], true)){
-                        echo " style=\"background-color:#99ccff\"";}?>>
+                            echo " style=\"background-color:#99ccff\"";
+                        }?>>
                         <td><?php echo $linha[1];?></td>
                         <td><?php echo $linha[0];?></td>
                     </tr><?php
+                    $total += $linha[1];
                 }?>
             </table>
         </td>
@@ -56,8 +64,3 @@ Update("Trades".$_GET["pair"]);?>
         </td>
     </tr>
 </table>
-<script>
-    setTimeout(function (){
-        Ajax("mercado.php?pair=<?php echo $_GET["pair"];?>", "AjaxMercado");
-    }, 30 * 1000);
-</script>
