@@ -9,11 +9,12 @@ require_once("system.php");?>
                 <tr><th>Quantia</th><th>Valor</th></tr><?php
                 $total = 0;
                 Update("Ordens".$_GET["pair"]);
-                foreach($_SESSION["Config"][$_GET["pair"]]["Ordens"]["bids"] as $id => $linha){?>
+                foreach($_SESSION["Temp"][$_GET["pair"]]["Ordens"]["bids"] as $id => $linha){?>
                     <tr title="1% = <?php echo number_format($linha[0] * 1.01, 5);
                     ?>&#13;Ordens na frente: <?php echo $id;
                     ?>&#13;Volume na frente: <?php echo $total;?>"<?php
-                        if(isset($_SESSION["Config"]["Ordens"]) and in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Config"]["Ordens"], true)){
+                        if(isset($_SESSION["Temp"][$_GET["pair"]]["MyOrdens"]) and 
+                        in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Temp"]["Precos"], true)){
                             echo " style=\"background-color:#99ccff\"";
                         }?>>
                         <td><?php echo $linha[1];?></td>
@@ -28,11 +29,12 @@ require_once("system.php");?>
                 <tr><th colspan="2">Ordens de venda</th></tr>
                 <tr><th>Quantia</th><th>Valor</th></tr><?php
                 $total = 0;
-                foreach($_SESSION["Config"][$_GET["pair"]]["Ordens"]["asks"] as $id => $linha){?>
+                foreach($_SESSION["Temp"][$_GET["pair"]]["Ordens"]["asks"] as $id => $linha){?>
                     <tr title="1% = <?php echo number_format($linha[0] / 1.01, 5);
                     ?>&#13;Ordens na frente: <?php echo $id;
                     ?>&#13;Volume na frente: <?php echo $total;?>"<?php
-                        if(isset($_SESSION["Config"]["Ordens"]) and in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Config"]["Ordens"], true)){
+                        if(isset($_SESSION["Temp"][$_GET["pair"]]["MyOrdens"]) and 
+                        in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Temp"]["Precos"], true)){
                             echo " style=\"background-color:#99ccff\"";
                         }?>>
                         <td><?php echo $linha[1];?></td>
@@ -47,7 +49,7 @@ require_once("system.php");?>
                 <tr><th colspan="4">Ordens executadas</th></tr>
                 <tr><th>Hora</th><th>Tipo</th><th>Quantia</th><th>Valor</th></tr><?php
                 Update("Trades".$_GET["pair"]);
-                foreach($_SESSION["Config"][$_GET["pair"]]["Trades"] as $id => $linha){?>
+                foreach($_SESSION["Temp"][$_GET["pair"]]["Trades"] as $id => $linha){?>
                     <tr title="Tempo: <?php echo (time()-$linha["date"]) / 60;?> minutos&#13;Ordens na frente: <?php echo $id;?>">
                         <td><?php echo date("d/m/Y H:i:s", $linha["date"]);?></td>
                         <td><?php echo $linha["type"] == "buy"?
