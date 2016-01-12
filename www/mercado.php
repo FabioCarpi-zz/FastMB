@@ -16,6 +16,12 @@ require_once("system.php");?>
                         if(isset($_SESSION["Temp"][$_GET["pair"]]["MyOrdens"]) and 
                         in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Temp"]["Precos"], true)){
                             echo " style=\"background-color:#99ccff\"";
+                        }elseif($linha[1] > 10){
+                            echo " style=\"background-color:#ff4500\"";
+                        }elseif($linha[1] > 5){
+                            echo " style=\"background-color:#ffa500\"";
+                        }elseif($linha[1] > 1){
+                            echo " style=\"background-color:#fffacd\"";
                         }?>>
                         <td><?php echo $linha[1];?></td>
                         <td><?php echo $linha[0];?></td>
@@ -36,6 +42,12 @@ require_once("system.php");?>
                         if(isset($_SESSION["Temp"][$_GET["pair"]]["MyOrdens"]) and 
                         in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Temp"]["Precos"], true)){
                             echo " style=\"background-color:#99ccff\"";
+                        }elseif($linha[1] > 10){
+                            echo " style=\"background-color:#ff4500\"";
+                        }elseif($linha[1] > 5){
+                            echo " style=\"background-color:#ffa500\"";
+                        }elseif($linha[1] > 1){
+                            echo " style=\"background-color:#fffacd\"";
                         }?>>
                         <td><?php echo $linha[1];?></td>
                         <td><?php echo $linha[0];?></td>
