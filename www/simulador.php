@@ -1,3 +1,7 @@
+<?php
+require_once("system.php");
+Update("Saldos");?>
+
 <script>
     var num;
     
@@ -37,9 +41,7 @@
         <tr>
             <td>Reais:</td>
             <td><input type="text" name="reais" size="12" onkeyup="Calcular()" onchange="Calcular()"></td>
-            <td><input type="button" value="&lt;&lt;" onclick="
-                document.simulador.reais.value = document.getElementById('brl').innerHTML;
-            "></td>
+            <td><input type="button" value="&lt;&lt;" onclick="document.simulador.reais.value = <?php echo $_SESSION["Temp"]["Saldos"]["brl"];?>"></td>
         </tr>
         <tr>
             <td>Valor pretendido:</td>

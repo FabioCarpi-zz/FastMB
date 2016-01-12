@@ -40,13 +40,10 @@ if(isset($_GET["Action"])){
             </td>
         </tr>
         <tr>
-            <td style="text-align:center;vertical-align:top;" colspan="2">
-                <br>
-                <span id="AjaxPagina">
-                    <script>
-                        Ajax("mercado.php?pair=btc", "AjaxPagina", null, true);
-                    </script>
-                </span>
+            <td style="text-align:center;vertical-align:top;" colspan="2" id="AjaxPagina">
+                <script>
+                    Ajax("mercado.php?pair=btc", "AjaxPagina", null, true);
+                </script>
             </td>
         </tr>
     </table><?php
