@@ -3,10 +3,7 @@ require_once("system.php");
 
 if(isset($_GET["Action"])){
     if($_GET["Action"] == "Saldo"){
-        @$dados = MB("getInfo");
-        if(!is_null($dados)){
-            $_SESSION["Temp"]["Saldos"] = $dados["return"]["funds"];
-        }?>
+        Update("Saldos");?>
         BRL: <span id="brl"><?php echo $_SESSION["Temp"]["Saldos"]["brl"];?></span><br>
         BTC: <span id="btc"><?php echo $_SESSION["Temp"]["Saldos"]["btc"];?></span><br>
         LTC: <span id="ltc"><?php echo $_SESSION["Temp"]["Saldos"]["ltc"];?></span><?php
@@ -22,14 +19,14 @@ if(isset($_GET["Action"])){
             </td>
             <td style="text-align:center;">
                 Versão <?php echo file_get_contents("versao.txt");?> de <?php echo file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/www/versao.txt");?><br>
-                Negociações: <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxMercado',null,true);">Bitcoins</a> -
-                <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxMercado',null,true);">Litecoin</a><br> 
-                Ordens: <a href="#" onclick="Ajax('ordens.php?Action=Form','AjaxMercado');">Nova</a> -
-                <a href="#" onclick="Ajax('concluidas.php','AjaxMercado');">Concluídas</a> - 
-                <a href="#" onclick="Ajax('simulador.php','AjaxMercado')">Simulador</a>
+                Negociações: <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxPagina',null,true);">Bitcoins</a> -
+                <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxPagina',null,true);">Litecoin</a><br> 
+                Ordens: <a href="#" onclick="Ajax('ordens.php?Action=Form','AjaxTrades');">Nova</a> -
+                <a href="#" onclick="Ajax('concluidas.php','AjaxPagina');">Concluídas</a> - 
+                <a href="#" onclick="Ajax('simulador.php','AjaxTrades')">Simulador</a>
             </td>
             <td rowspan="3" style="vertical-align:top;width:810px;">
-                <iframe src="https://www.tradingview.com/chart/slfdymsk/" width="810" height="830"></iframe>
+                <iframe src="https://www.tradingview.com/chart/8rG7IftD/" width="810" height="830"></iframe>
             </td>
         </tr>
         <tr>
@@ -45,9 +42,9 @@ if(isset($_GET["Action"])){
         <tr>
             <td style="text-align:center;vertical-align:top;" colspan="2">
                 <br>
-                <span id="AjaxMercado">
+                <span id="AjaxPagina">
                     <script>
-                        Ajax("mercado.php?pair=btc", "AjaxMercado", null, true);
+                        Ajax("mercado.php?pair=btc", "AjaxPagina", null, true);
                     </script>
                 </span>
             </td>

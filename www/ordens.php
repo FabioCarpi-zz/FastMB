@@ -1,9 +1,10 @@
 <?php
 require_once("system.php");
-require_once("autovenda.php");
 
 if(isset($_GET["Action"])){
-    if($_GET["Action"] == "Form"){?>
+    if($_GET["Action"] == "Form"){
+        Update("Saldos");?>
+        <script>TimerStop("AjaxPagina");</script>
         <form name="ordem">
             Moeda: <select name="pair">
                 <option value="btc">Bitcoin</option>
@@ -14,17 +15,20 @@ if(isset($_GET["Action"])){
                 <option value="sell">Vender</option>
             </select><br>
             Valor: 
-            <input type="text" name="valor" size="7" onkeyup="document.ordem.valor2.value=document.ordem.valor.value*1.01">
+            <input type="text" name="valor" size="7" onkeyup="
+                num = document.ordem.valor.value * 1.01;
+                document.ordem.valor2.value = num.toFixed(5);
+            ">
             <input type="text" name="valor2" size="7" disabled><br>
             Quantidade: <input type="text" name="volume" size="7">
             <input type="button" value="&lt;&lt;" onclick="
                 if(document.ordem.tipo.value == 'buy'){
-                    num = document.getElementById('brl').innerHTML / document.ordem.valor.value;
+                    num = <?php echo $_SESSION["Temp"]["Saldos"]["brl"];?> / document.ordem.valor.value;
                     document.ordem.volume.value = num.toFixed(8);
                 }else if(document.ordem.tipo.value == 'sell' && document.ordem.pair.value == 'btc'){
-                    document.ordem.volume.value=document.getElementById('btc').innerHTML;
+                    document.ordem.volume.value = <?php echo $_SESSION["Temp"]["Saldos"]["btc"];?>;
                 }else if(document.ordem.tipo.value == 'sell' && document.ordem.pair.value == 'ltc'){
-                    document.ordem.volume.value=document.getElementById('ltc').innerHTML;
+                    document.ordem.volume.value = <?php echo $_SESSION["Temp"]["Saldos"]["ltc"];?>
                 }"><br>
             Auto venda: <input type="text" name="autovenda" size="2" onkeyup="
                 document.ordem.autovenda2.value = parseFloat(document.ordem.valor.value) + ((document.ordem.valor.value * document.ordem.autovenda.value) / 100);
@@ -36,7 +40,7 @@ if(isset($_GET["Action"])){
             Bot mínimo: <input type="text" name="min" size="7"><br>
             Bot maximo: <input type="text" name="max" size="7"><br>
             <br>
-            <input type="button" value=" Criar " onclick="Ajax('ordens.php?Action=New','AjaxMercado',
+            <input type="button" value=" Criar " onclick="Ajax('ordens.php?Action=New','AjaxSave',
                 'pair='+document.ordem.pair.value+
                 '&tipo='+document.ordem.tipo.value+
                 '&valor='+document.ordem.valor.value+
@@ -45,13 +49,16 @@ if(isset($_GET["Action"])){
                 '&autocompra='+document.ordem.autocompra.value+
                 '&min='+document.ordem.min.value+
                 '&max='+document.ordem.max.value);">
-        </form><?php
+            <span id="AjaxSave"></span>
+        </form>
+        <span style="font-size:11px">Atualização automática suspensa</span><br>
+        <br><?php
     }elseif($_GET["Action"] == "New"){
         $dados = MB("Trade&pair=".$_POST["pair"]."_brl&type=".$_POST["tipo"].
             "&volume=".str_replace(",", ".", $_POST["volume"]).
             "&price=".str_replace(",", ".", $_POST["valor"]));
         if($dados["success"]){
-            echo "Ordem criada com êxito";
+            echo "<br>Ordem criada com êxito<br>";
             if($_POST["autovenda"] != ""){
                 $_SESSION["Config"]["Auto"][$_POST["pair"]][key($dados["return"])] = array(
                     "tipo" => $_POST["tipo"],
@@ -76,7 +83,7 @@ if(isset($_GET["Action"])){
         $dados = MB("CancelOrder&pair=".$_GET["pair"]."_brl&order_id=".$_GET["id"]);?>
         <div style="text-align:center;"><?php
             if($dados["success"]){
-                echo "Ordem excluída com êxito";
+                echo "<br>Ordem excluída com êxito<br>";
                 unset($_SESSION["Config"]["Auto"][$_GET["pair"]][$_GET["id"]]);
                 unset($_SESSION["Config"]["Bot"][$_GET["id"]]);
                 ConfigSave();
@@ -88,6 +95,7 @@ if(isset($_GET["Action"])){
         </div><?php
     }
 }else{
+    require_once("autovenda.php");
     Update("MyOrdens");
     $_SESSION["Temp"]["Auto"] = array();?>
     <table border="1" class="Center">

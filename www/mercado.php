@@ -39,11 +39,11 @@ require_once("system.php");?>
                     <tr title="1% = <?php echo number_format($linha[0] / 1.01, 5);
                     ?>&#13;Ordens na frente: <?php echo $id;
                     ?>&#13;Volume na frente: <?php echo $total;?>"<?php
-                        if(isset($_SESSION["Temp"][$_GET["pair"]]["MyOrdens"]) and 
+                        if($linha[1] > 10){
+                            echo " style=\"background-color:#ff4500\"";
+                        }elseif(isset($_SESSION["Temp"][$_GET["pair"]]["MyOrdens"]) and 
                         in_array(number_format($linha[0], 5, ".", ""), $_SESSION["Temp"]["Precos"], true)){
                             echo " style=\"background-color:#99ccff\"";
-                        }elseif($linha[1] > 10){
-                            echo " style=\"background-color:#ff4500\"";
                         }elseif($linha[1] > 5){
                             echo " style=\"background-color:#ffa500\"";
                         }elseif($linha[1] > 1){
@@ -57,6 +57,7 @@ require_once("system.php");?>
             </table>
         </td>
         <td style="vertical-align:top;">
+            <span id="AjaxTrades"></span>
             <table border="1">
                 <tr><th colspan="4">Ordens executadas</th></tr>
                 <tr><th>Hora</th><th>Tipo</th><th>Quantia</th><th>Valor</th></tr><?php

@@ -1,7 +1,7 @@
 var ObjetoAjax = [], Atualizacoes = [];
 
 function Ajax(Url, Retorno, Dados, Atualizar){
-    clearTimeout(Atualizacoes[Retorno]);
+    TimerStop(Retorno);
     if(typeof ObjetoAjax[Retorno] == "undefined"){
         try{
             ObjetoAjax[Retorno] = new ActiveXObject("Msxml2.XMLHTTP");
@@ -40,6 +40,10 @@ function Ajax(Url, Retorno, Dados, Atualizar){
 		ObjetoAjax[Retorno].setRequestHeader("Connection", "close");
 	}
 	ObjetoAjax[Retorno].send(Dados);
+}
+
+function TimerStop(Id){
+    clearTimeout(Atualizacoes[Id]);
 }
 
 function Executar(Local){

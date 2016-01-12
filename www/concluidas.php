@@ -11,6 +11,7 @@ function cmp($A, $B){
 if(isset($_GET["action"])){
 
 }else{?>
+    <span id="AjaxTrades"></span>
     <table border="1" class="Center">
         <tr>
             <th>Moeda</th>
