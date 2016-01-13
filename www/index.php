@@ -19,8 +19,8 @@ if(isset($_GET["Action"])){
             </td>
             <td style="text-align:center;">
                 Versão <?php echo file_get_contents("versao.txt");?> de <?php echo file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/www/versao.txt");?><br>
-                Negociações: <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxPagina',null,true);">Bitcoins</a> -
-                <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxPagina',null,true);">Litecoin</a><br> 
+                Negociações: <a href="#" onclick="Ajax('mercadobtc.php','AjaxPagina');">Bitcoins</a> -
+                <a href="#" onclick="Ajax('mercadoltc.php','AjaxPagina');">Litecoin</a><br> 
                 Ordens: <a href="#" onclick="Ajax('ordens.php?Action=Form','AjaxTrades');">Nova</a> -
                 <a href="#" onclick="Ajax('concluidas.php','AjaxPagina');">Concluídas</a> - 
                 <a href="#" onclick="Ajax('simulador.php','AjaxTrades')">Simulador</a>
@@ -42,7 +42,7 @@ if(isset($_GET["Action"])){
         <tr>
             <td style="text-align:center;vertical-align:top;" colspan="2" id="AjaxPagina">
                 <script>
-                    Ajax("mercado.php?pair=btc", "AjaxPagina", null, true);
+                    Ajax("mercadobtc.php", "AjaxPagina");
                 </script>
             </td>
         </tr>

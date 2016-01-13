@@ -40,6 +40,7 @@ if(isset($_GET["Action"])){
             Bot mínimo: <input type="text" name="min" size="7"><br>
             Bot maximo: <input type="text" name="max" size="7"><br>
             <br>
+            <input type="button" value="Fechar" onclick="document.getElementById('AjaxTrades').innerHTML='';">
             <input type="button" value=" Criar " onclick="Ajax('ordens.php?Action=New','AjaxSave',
                 'pair='+document.ordem.pair.value+
                 '&tipo='+document.ordem.tipo.value+
@@ -48,17 +49,15 @@ if(isset($_GET["Action"])){
                 '&autovenda='+document.ordem.autovenda.value+
                 '&autocompra='+document.ordem.autocompra.value+
                 '&min='+document.ordem.min.value+
-                '&max='+document.ordem.max.value);">
+                '&max='+document.ordem.max.value);"><br>
             <span id="AjaxSave"></span>
-        </form>
-        <span style="font-size:11px">Atualização automática suspensa</span><br>
-        <br><?php
+        </form><br><?php
     }elseif($_GET["Action"] == "New"){
         $dados = MB("Trade&pair=".$_POST["pair"]."_brl&type=".$_POST["tipo"].
             "&volume=".str_replace(",", ".", $_POST["volume"]).
             "&price=".str_replace(",", ".", $_POST["valor"]));
         if($dados["success"]){
-            echo "<br>Ordem criada com êxito<br>";
+            echo "Ordem criada com êxito";
             if($_POST["autovenda"] != ""){
                 $_SESSION["Config"]["Auto"][$_POST["pair"]][key($dados["return"])] = array(
                     "tipo" => $_POST["tipo"],
@@ -78,21 +77,19 @@ if(isset($_GET["Action"])){
         }else{
             echo $dados["error"];
         }
+        ?><br><?php
     }elseif($_GET["Action"] == "Del"){
-        require_once("head.php");
-        $dados = MB("CancelOrder&pair=".$_GET["pair"]."_brl&order_id=".$_GET["id"]);?>
-        <div style="text-align:center;"><?php
-            if($dados["success"]){
-                echo "<br>Ordem excluída com êxito<br>";
-                unset($_SESSION["Config"]["Auto"][$_GET["pair"]][$_GET["id"]]);
-                unset($_SESSION["Config"]["Bot"][$_GET["id"]]);
-                ConfigSave();
-            }else{
-                echo $dados["error"];
-            }?>
-            <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_GET["pair"];?>','AjaxOrdens',null,true);
-                Ajax('index.php?Action=Saldo','AjaxSaldo',null,true);">Atualizar</a>
-        </div><?php
+        $dados = MB("CancelOrder&pair=".$_GET["pair"]."_brl&order_id=".$_GET["id"]);
+        if($dados["success"]){
+            echo "Ordem excluída com êxito<br>";
+            unset($_SESSION["Config"]["Auto"][$_GET["pair"]][$_GET["id"]]);
+            unset($_SESSION["Config"]["Bot"][$_GET["id"]]);
+            ConfigSave();
+        }else{
+            echo $dados["error"];
+        }?>
+        <a href="#" onclick="Ajax('ordens.php?pair=<?php echo $_GET["pair"];?>','AjaxOrdens',null,true);
+            Ajax('index.php?Action=Saldo','AjaxSaldo',null,true);">Atualizar</a><?php
     }
 }else{
     require_once("autovenda.php");

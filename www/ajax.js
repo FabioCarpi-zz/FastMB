@@ -48,9 +48,13 @@ function TimerStop(Id){
 
 function Executar(Local){
     var Comando, Texto = document.getElementById(Local).innerHTML;
-    while(Texto.indexOf("<script>") >= 0){
-        Comando = Texto.substring(Texto.indexOf("<script>") + 8, Texto.indexOf("</script>"));
-        window.eval(Comando);
-        Texto = Texto.substring(Texto.indexOf("</script>") + 9);
+    while(Texto.indexOf("<script") >= 0){
+        Texto = Texto.substr(Texto.indexOf("<script") + 7);
+        Texto = Texto.substr(Texto.indexOf(">") + 1);
+        Comando = Texto.substr(0, Texto.indexOf("</script>"));
+        if(Comando != ""){
+            window.eval(Comando);
+        }
+        Texto = Texto.substr(Texto.indexOf("</script>") + 9);
     }
 }

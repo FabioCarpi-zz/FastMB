@@ -9,8 +9,7 @@ function PhpLiveImport($nome){
 	require_once($nome);
 }
 
-function MB($Comando){
-    require_once("config.php");
+function MB($Comando, $Json = false){
     $msg = "method=".$Comando."&tonce=".time();
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://www.mercadobitcoin.com.br/tapi/");
@@ -24,7 +23,11 @@ function MB($Comando){
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    return json_decode(curl_exec($ch), true);
+    if($Json){
+        return curl_exec($ch);
+    }else{
+        return json_decode(curl_exec($ch), true);
+    }
 }
 
 function ConfigLoad(){
@@ -59,38 +62,4 @@ function Update($Tipo = null){
             $_SESSION["Temp"]["ltc"]["MyOrdens"] = $dados["return"];
         }
     }
-    if($Tipo == null or strtolower($Tipo) == strtolower("OrdensBtc")){
-        @$dados = json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/orderbook"), true);
-        if(!is_null($dados)){
-            $_SESSION["Temp"]["btc"]["Ordens"] = $dados;
-            $dados = &$_SESSION["Temp"]["btc"]["Ordens"];
-            $dados["bids"] = array_slice($dados["bids"], 0, 50);
-            $dados["asks"] = array_slice($dados["asks"], 0, 50);
-        }
-    }
-    if($Tipo == null or strtolower($Tipo) == strtolower("OrdensLtc")){
-        @$dados = json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/orderbook_litecoin"), true);
-        if(!is_null($dados)){
-            $_SESSION["Temp"]["ltc"]["Ordens"] = $dados;
-            $dados = &$_SESSION["Temp"]["ltc"]["Ordens"];
-            $dados["bids"] = array_slice($dados["bids"], 0, 50);
-            $dados["asks"] = array_slice($dados["asks"], 0, 50);
-        }
-    }
-    if($Tipo == null or strtolower($Tipo) == strtolower("TradesBtc")){
-        @$dados = array_reverse(json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/trades/".strtotime("-12 hours")), true));
-        if(!is_null($dados)){
-            $_SESSION["Temp"]["btc"]["Trades"] = array_slice($dados, 0, 50);
-        }
-    }
-    if($Tipo == null or strtolower($Tipo) == strtolower("TradesLtc")){
-        @$dados = array_reverse(json_decode(file_get_contents("https://www.mercadobitcoin.com.br/api/trades_litecoin/".strtotime("-12 hours")), true));
-        if(!is_null($dados)){
-            $_SESSION["Temp"]["ltc"]["Trades"] = array_slice($dados, 0, 50);
-        }
-    }
-}
-
-function Map($In, $InMin, $InMax, $OutMin, $OutMax){
-    return (($In - $InMin) * ($OutMax - $OutMin) / ($InMax - $InMin) + $OutMin);
 }

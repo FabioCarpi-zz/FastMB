@@ -7,4 +7,5 @@ ini_set("default_socket_timeout", 1);
 session_start();
 
 require_once("functions.php");
+require_once("config.php");
 ConfigLoad();

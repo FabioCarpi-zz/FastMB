@@ -5,8 +5,6 @@ Update("Saldos");?>
 <script>
     var num;
     
-    TimerStop("AjaxPagina");
-    
     function Calcular(){
         num = document.simulador.reais.value / document.simulador.compra.value;
         document.simulador.bitcoins.value = num.toFixed(8);
@@ -83,7 +81,6 @@ Update("Saldos");?>
             <td>Lucro:</td>
             <td><input type="text" name="lucro" size="12" disabled></td>
         </tr>
-    </table>
+    </table><br>
+    <input type="button" value="Fechar" onclick="document.getElementById('AjaxTrades').innerHTML='';">
 </form><br>
-<span style="font-size:11px">Atualização automática suspensa</span><br>
-<br>
