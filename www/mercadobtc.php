@@ -26,7 +26,7 @@ require_once("system.php");?>
                     console.log("Ordens atualizadas");
                 }else{
                     PovoarMercado(JSON.parse(ObjetoAjax["TempoReal" + Tipo].responseText));
-                    console.log("Mercado atualizadas");
+                    console.log("Mercado atualizado");
                 }
             }
         }

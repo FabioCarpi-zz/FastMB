@@ -12,7 +12,7 @@ function PhpLiveImport($nome){
 function MB($Comando, $Json = false){
     $msg = "method=".$Comando."&tonce=".time();
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://www.mercadobitcoin.com.br/tapi/");
+    curl_setopt($ch, CURLOPT_URL, "https://www.mercadobitcoin.net/tapi/");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         "Content-Type: application/x-www-form-urlencoded",
         "Key: ".ChaveId,
