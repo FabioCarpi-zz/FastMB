@@ -39,23 +39,23 @@ if(isset($_GET["Action"])){
             <td style="text-align:center;vertical-align:top;" colspan="2" id="AjaxPagina"></td>
         </tr>
     </table>
-    <div id="AjaxJanelaNova">
-        <div style="text-align:right;background-color:#3366ff;">
-            <img src="del.gif" onclick="document.getElementById('AjaxJanelaNova').style.visibility = 'hidden';">
-        </div>
-        <div id="AjaxJanelaNovaConteudo" style="overflow:auto;text-align:center;"></div>
-    </div>
     <div id="AjaxJanelaConcluidas">
         <div id="AjaxJanelaConcluidasTitulo" style="text-align:right;background-color:#3366ff;">
-            <img src="del.gif" onclick="document.getElementById('AjaxJanelaConcluidas').style.visibility = 'hidden';">
+            <img src="close.gif" onclick="document.getElementById('AjaxJanelaConcluidas').style.visibility = 'hidden';">
         </div>
         <div id="AjaxJanelaConcluidasConteudo" style="overflow:auto;text-align:center;"></div>
     </div>
     <div id="AjaxJanelaSimulador">
         <div id="AjaxJanelaSimuladorTitulo" style="text-align:right;background-color:#3366ff;">
-            <img src="del.gif" onclick="document.getElementById('AjaxJanelaSimulador').style.visibility = 'hidden';">
+            <img src="close.gif" onclick="document.getElementById('AjaxJanelaSimulador').style.visibility = 'hidden';">
         </div>
         <div id="AjaxJanelaSimuladorConteudo" style="overflow:auto;text-align:center;"></div>
+    </div>
+    <div id="AjaxJanelaNova">
+        <div id="AjaxJanelaNovaTitulo" style="text-align:right;background-color:#3366ff;">
+            <img src="close.gif" onclick="document.getElementById('AjaxJanelaNova').style.visibility = 'hidden';">
+        </div>
+        <div id="AjaxJanelaNovaConteudo" style="overflow:auto;text-align:center;"></div>
     </div>
     <script>
         Ajax("index.php?Action=Saldo", "AjaxSaldo", null, true);
@@ -84,16 +84,16 @@ if(isset($_GET["Action"])){
         function _destroy() {
             selected = null;
         }
-        document.getElementById("AjaxJanelaNova").onmousedown = function (){
-            _drag_init(this);
+        document.getElementById("AjaxJanelaNovaTitulo").onmousedown = function (){
+            _drag_init(document.getElementById("AjaxJanelaNova"));
             return false;
         };
-        document.getElementById("AjaxJanelaSimulador").onmousedown = function (){
-            _drag_init(this);
+        document.getElementById("AjaxJanelaSimuladorTitulo").onmousedown = function (){
+            _drag_init(document.getElementById("AjaxJanelaSimulador"));
             return false;
         };
-        document.getElementById("AjaxJanelaConcluidas").onmousedown = function (){
-            _drag_init(this);
+        document.getElementById("AjaxJanelaConcluidasTitulo").onmousedown = function (){
+            _drag_init(document.getElementById("AjaxJanelaConcluidas"));
             return false;
         };
         document.onmousemove = _move_elem;
