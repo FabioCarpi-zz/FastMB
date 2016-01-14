@@ -134,7 +134,6 @@ require_once("system.php");?>
             </table>
         </td>
         <td style="vertical-align:top;">
-            <span id="AjaxTrades"></span>
             <table border="1" id="Mercado">
                 <tr><th colspan="4">Ordens executadas</th></tr>
                 <tr><th>Hora</th><th>Tipo</th><th>Quantia</th><th>Valor</th></tr><?php

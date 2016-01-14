@@ -81,6 +81,5 @@ Update("Saldos");?>
             <td>Lucro:</td>
             <td><input type="text" name="lucro" size="12" disabled></td>
         </tr>
-    </table><br>
-    <input type="button" value="Fechar" onclick="document.getElementById('AjaxTrades').innerHTML='';">
+    </table>
 </form><br>

@@ -40,7 +40,6 @@ if(isset($_GET["Action"])){
             Bot mínimo: <input type="text" name="min" size="7"><br>
             Bot maximo: <input type="text" name="max" size="7"><br>
             <br>
-            <input type="button" value="Fechar" onclick="document.getElementById('AjaxTrades').innerHTML='';">
             <input type="button" value=" Criar " onclick="Ajax('ordens.php?Action=New','AjaxSave',
                 'pair='+document.ordem.pair.value+
                 '&tipo='+document.ordem.tipo.value+
