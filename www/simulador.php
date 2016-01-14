@@ -42,7 +42,7 @@ Update("Saldos");?>
             <td><input type="button" value="&lt;&lt;" onclick="document.simulador.reais.value = <?php echo $_SESSION["Temp"]["Saldos"]["brl"];?>"></td>
         </tr>
         <tr>
-            <td>Valor pretendido:</td>
+            <td style="white-space:nowrap;">Valor pretendido:</td>
             <td><input type="text" name="compra" size="12" onkeyup="Calcular()" onchange="Calcular()"></td>
         </tr>
         <tr>
@@ -58,7 +58,7 @@ Update("Saldos");?>
             <td><input type="text" name="comprado" size="12" disabled></td>
         </tr>
         <tr>
-            <td>Valor pretendido:</td>
+            <td style="white-space:nowrap;">Valor pretendido:</td>
             <td><input type="text" name="venda" size="12" onkeyup="Calcular2()" onchange="Calcular2()"></td>
         </tr>
         <tr>

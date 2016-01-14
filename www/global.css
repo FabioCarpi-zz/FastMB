@@ -1,7 +1,10 @@
 img{border:none;}
 a{text-decoration:none; color:#00f;}
 a:hover{text-decoration:underline;}
+table{border:solid 1px #000;}
 table.Center{margin-left:auto; margin-right:auto;}
+th{border:solid 1px #000;}
+td{border:solid 1px #000;}
 
 #AjaxJanelaConcluidas{
     border:solid 1px #000;
@@ -10,6 +13,9 @@ table.Center{margin-left:auto; margin-right:auto;}
     position:absolute;
     top:60px;
     left:550px;
+    width:600px;
+    height:500px;
+    overflow-x:no-content;
 }
 
 #AjaxJanelaSimulador{
@@ -19,6 +25,7 @@ table.Center{margin-left:auto; margin-right:auto;}
     position:absolute;
     top:60px;
     left:620px;
+    width:290px;
     height:370px;
 }
 
@@ -28,6 +35,7 @@ table.Center{margin-left:auto; margin-right:auto;}
     visibility:hidden;
     position:absolute;
     top:135px;
-    left:400px;
-    height:290px;
+    left:405px;
+    width:240px;
+    height:250px;
 }

@@ -10,17 +10,16 @@ if(isset($_GET["Action"])){
     }
 }else{
     require_once("head.php");?>
-    <table class="Center" style="width:100%">
+    <table class="Center" style="border:none;width:100%">
         <tr>
-            <td style="text-align:center;width:20%;" id="AjaxSaldo"></td>
-            <td style="text-align:center;">
+            <td style="text-align:center;width:20%;border:none;" id="AjaxSaldo"></td>
+            <td style="text-align:center;border:none;">
                 Versão <?php echo file_get_contents("versao.txt");?> de <?php echo file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/www/versao.txt");?><br>
-                Negociações: <a href="#" onclick="Ajax('mercadobtc.php','AjaxPagina');">Bitcoins</a> -
-                <a href="#" onclick="Ajax('mercadoltc.php','AjaxPagina');">Litecoin</a><br> 
+                Negociações: <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxPagina');">Bitcoins</a> -
+                <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxPagina');">Litecoin</a><br> 
                 Ordens: <a href="#" onclick="Ajax('ordens.php?Action=Form','AjaxJanelaNovaConteudo');
                     var e = document.getElementById('AjaxJanelaNova');
-                    e.style.visibility = 'visible';
-                    e.style.overflow = 'auto';"
+                    e.style.visibility = 'visible';"
                 >Nova</a> -
                 <a href="#" onclick="Ajax('concluidas.php','AjaxJanelaConcluidasConteudo');
                     var e = document.getElementById('AjaxJanelaConcluidas');
@@ -30,8 +29,7 @@ if(isset($_GET["Action"])){
                 >Concluídas</a> - 
                 <a href="#" onclick="Ajax('simulador.php','AjaxJanelaSimuladorConteudo');
                     var e = document.getElementById('AjaxJanelaSimulador');
-                    e.style.visibility = 'visible';
-                    e.style.overflow = 'auto';"
+                    e.style.visibility = 'visible';"
                 >Simulador</a>
             </td>
             <td rowspan="3" style="vertical-align:top;width:50%;">
@@ -39,10 +37,10 @@ if(isset($_GET["Action"])){
             </td>
         </tr>
         <tr>
-            <td style="text-align:center;" colspan="2" id="AjaxOrdens"></td>
+            <td style="text-align:center;border:none;" colspan="2" id="AjaxOrdens"></td>
         </tr>
         <tr>
-            <td style="text-align:center;vertical-align:top;" colspan="2" id="AjaxPagina"></td>
+            <td style="text-align:center;border:none;vertical-align:top;" colspan="2" id="AjaxPagina"></td>
         </tr>
     </table>
     <div id="AjaxJanelaConcluidas">
@@ -58,8 +56,7 @@ if(isset($_GET["Action"])){
         <div id="AjaxJanelaSimuladorTitulo" style="text-align:right;background-color:#3366ff;">
             <img src="close.gif" onclick="
                 var e = document.getElementById('AjaxJanelaSimulador');
-                e.style.visibility = 'hidden';
-                e.style.overflow = 'hidden';">
+                e.style.visibility = 'hidden';">
         </div>
         <div id="AjaxJanelaSimuladorConteudo" style="text-align:center;"></div>
     </div>
@@ -67,16 +64,15 @@ if(isset($_GET["Action"])){
         <div id="AjaxJanelaNovaTitulo" style="text-align:right;background-color:#3366ff;">
             <img src="close.gif" onclick="
                 var e = document.getElementById('AjaxJanelaNova');
-                e.style.visibility = 'hidden';
-                e.style.overflow = 'hidden';">
+                e.style.visibility = 'hidden';">
         </div>
         <div id="AjaxJanelaNovaConteudo" style="text-align:center;"></div>
     </div>
     <script>
         Ajax("index.php?Action=Saldo", "AjaxSaldo", null, true);
         Ajax("ordens.php?pair=btc", "AjaxOrdens", null, true);
-        Ajax("mercadobtc.php", "AjaxPagina");
-        document.getElementById("chart").height = (window.innerHeight - 10) + "px";
+        Ajax("mercado.php?pair=btc", "AjaxPagina");
+        document.getElementById("chart").height = (window.innerHeight - 10);
         document.getElementById('AjaxJanelaConcluidasConteudo').style.height = (window.innerHeight / 1.1) - 25 + "px";
         setInterval(function(){
            document.getElementById("TimerOrdens").innerHTML--;

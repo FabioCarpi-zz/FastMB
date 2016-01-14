@@ -31,9 +31,9 @@ require_once("system.php");?>
             }
         }
         if(Tipo == 1){
-            ObjetoAjax["TempoReal" + Tipo].open("GET", "translate.php?tipo=Ordens&pair=btc", true);
+            ObjetoAjax["TempoReal" + Tipo].open("GET", "translate.php?tipo=Ordens&pair=<?php echo $_GET["pair"];?>", true);
         }else{
-            ObjetoAjax["TempoReal" + Tipo].open("GET", "translate.php?tipo=Mercado&pair=btc", true);
+            ObjetoAjax["TempoReal" + Tipo].open("GET", "translate.php?tipo=Mercado&pair=<?php echo $_GET["pair"];?>", true);
         }
         ObjetoAjax["TempoReal" + Tipo].setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         ObjetoAjax["TempoReal" + Tipo].send();
@@ -43,14 +43,16 @@ require_once("system.php");?>
         var soma1 = 0, soma2 = 0, conta1 = 0, conta2 = 0;
         for(var i = 0; i < 40; i++){
             var temp = parseFloat(Dados["bids"][i][1]);
-            if(temp >= 10 == true){
-                document.getElementById("1ordem-" + i).style.backgroundColor = "#ff4500";
-            }else if(temp >= 5 == true){
-                document.getElementById("1ordem-" + i).style.backgroundColor = "#ffa500";
-            }else if(temp >= 1 == true){
-                document.getElementById("1ordem-" + i).style.backgroundColor = "#fffacd";
-            }else{
-                document.getElementById("1ordem-" + i).style.backgroundColor = "#fff";
+            if(<?php echo $_GET["pair"];?> == "btc"){
+                if(temp >= 10 == true){
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#ff4500";
+                }else if(temp >= 5 == true){
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#ffa500";
+                }else if(temp >= 1 == true){
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#fffacd";
+                }else{
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#fff";
+                }
             }
             temp = Dados["bids"][i][0] * 1.01;
             document.getElementById("1ordem-" + i).title = "1% = " + temp.toFixed(5) + 
@@ -62,14 +64,16 @@ require_once("system.php");?>
             document.getElementById("1ordem-" + i + "-1").innerHTML = Dados["bids"][i][0];
             
             temp = parseFloat(Dados["asks"][i][1]);
-            if(temp >= 10 == true){
-                document.getElementById("2ordem-" + i).style.backgroundColor = "#ff4500";
-            }else if(temp >= 5 == true){
-                document.getElementById("2ordem-" + i).style.backgroundColor = "#ffa500";
-            }else if(temp >= 1 == true){
-                document.getElementById("2ordem-" + i).style.backgroundColor = "#fffacd";
-            }else{
-                document.getElementById("2ordem-" + i).style.backgroundColor = "#fff";
+            if(<?php echo $_GET["pair"];?> == "btc"){
+                if(temp >= 10 == true){
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#ff4500";
+                }else if(temp >= 5 == true){
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#ffa500";
+                }else if(temp >= 1 == true){
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#fffacd";
+                }else{
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#fff";
+                }
             }
             temp = Dados["asks"][i][0] / 1.01;
             document.getElementById("2ordem-" + i).title = "1% = " + temp.toFixed(5) + 
@@ -80,9 +84,11 @@ require_once("system.php");?>
             document.getElementById("2ordem-" + i + "-0").innerHTML = Dados["asks"][i][1];
             document.getElementById("2ordem-" + i + "-1").innerHTML = Dados["asks"][i][0];
         }
-        setTimeout(function (){
-            TempoReal(1);
-        }, Tempo * 1000)
+        if(<?php echo $_GET["pair"];?> == "btc"){
+            setTimeout(function (){
+                TempoReal(1);
+            }, Tempo * 1000);
+        }
     }
     
     function PovoarMercado(Dados){
@@ -106,16 +112,18 @@ require_once("system.php");?>
             document.getElementById("mercado-" + i + "-2").innerHTML = Dados[i]["amount"];
             document.getElementById("mercado-" + i + "-3").innerHTML = Dados[i]["price"];
         }
-        setTimeout(function (){
-            TempoReal(2);
-        }, Tempo * 1000)
+        if(<?php echo $_GET["pair"];?> == "btc"){
+            setTimeout(function (){
+                TempoReal(2);
+            }, Tempo * 1000);
+        }
     }
 </script>
 
-<table class="Center">
+<table class="Center" style="border:none;">
     <tr>
-        <td style="vertical-align:top;">
-            <table border="1" id="OrdensCompra">
+        <td style="vertical-align:top;border:none;">
+            <table id="OrdensCompra">
                 <tr><th colspan="2">Ordens de compra</th></tr>
                 <tr><th>Quantia</th><th>Valor</th></tr><?php
                 for($i = 0; $i < 40; $i++){
@@ -126,8 +134,8 @@ require_once("system.php");?>
                 }?>
             </table>
         </td>
-        <td style="vertical-align:top;">
-            <table border="1" id="OrdensVenda">
+        <td style="vertical-align:top;border:none;">
+            <table id="OrdensVenda">
                 <tr><th colspan="2">Ordens de venda</th></tr>
                 <tr><th>Quantia</th><th>Valor</th></tr><?php
                 for($i = 0; $i < 40; $i++){
@@ -138,8 +146,8 @@ require_once("system.php");?>
                 }?>
             </table>
         </td>
-        <td style="vertical-align:top;">
-            <table border="1" id="Mercado">
+        <td style="vertical-align:top;border:none;">
+            <table id="Mercado">
                 <tr><th colspan="4">Ordens executadas</th></tr>
                 <tr><th>Hora</th><th>Tipo</th><th>Quantia</th><th>Valor</th></tr><?php
                 for($i = 0; $i < 40; $i++){

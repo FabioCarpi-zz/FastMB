@@ -37,8 +37,6 @@ if(isset($_GET["Action"])){
                 num = parseFloat(document.ordem.autovenda2.value) - (document.ordem.autovenda2.value * document.ordem.autocompra.value / 100);
                 document.ordem.autocompra2.value = num.toFixed(5);
             "><input type="text" name="autocompra2" size="7" disabled><br>
-            Bot mínimo: <input type="text" name="min" size="7"><br>
-            Bot maximo: <input type="text" name="max" size="7"><br>
             <br>
             <input type="button" value=" Criar " onclick="Ajax('ordens.php?Action=New','AjaxSave',
                 'pair='+document.ordem.pair.value+
@@ -46,9 +44,7 @@ if(isset($_GET["Action"])){
                 '&valor='+document.ordem.valor.value+
                 '&volume='+document.ordem.volume.value+
                 '&autovenda='+document.ordem.autovenda.value+
-                '&autocompra='+document.ordem.autocompra.value+
-                '&min='+document.ordem.min.value+
-                '&max='+document.ordem.max.value);"><br>
+                '&autocompra='+document.ordem.autocompra.value);"><br>
             <span id="AjaxSave"></span>
         </form><br><?php
     }elseif($_GET["Action"] == "New"){
@@ -94,7 +90,7 @@ if(isset($_GET["Action"])){
     require_once("autovenda.php");
     Update("MyOrdens");
     $_SESSION["Temp"]["Auto"] = array();?>
-    <table border="1" class="Center">
+    <table class="Center">
         <tr>
             <td id="TimerOrdens">30</td>
             <th>Moeda</th>
@@ -110,7 +106,7 @@ if(isset($_GET["Action"])){
         foreach($_SESSION["Temp"]["btc"]["MyOrdens"] as $id => $linha){?>
             <tr>
                 <td>
-                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=btc&id=<?php echo $id;?>; else return false;','AjaxOrdens')"><img src="del.gif" border="0"></a>
+                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=btc&id=<?php echo $id;?>; else return false;','AjaxOrdens')"><img src="del.gif" alt=""></a>
                 </td>
                 <td style="text-align:center;">BTC</td>
                 <td style="text-align:center;"><?php echo $linha["type"] == "buy"? "Compra": "Venda"; echo " (".count($linha["operations"]).")";?></td>
@@ -133,7 +129,7 @@ if(isset($_GET["Action"])){
         foreach($_SESSION["Temp"]["ltc"]["MyOrdens"] as $id => $linha){?>
             <tr>
                 <td>
-                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=ltc&id=<?php echo $id;?>; else return false;','AjaxOrdens')"><img src="del.gif" border="0"></a>
+                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=ltc&id=<?php echo $id;?>; else return false;','AjaxOrdens')"><img src="del.gif" alt=""></a>
                 </td>
                 <td style="text-align:center;">LTC</td>
                 <td style="text-align:center;"><?php echo $linha["type"] == "buy"? "Compra": "Venda"; echo " (".count($linha["operations"]).")";?></td>
