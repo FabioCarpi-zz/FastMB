@@ -89,6 +89,11 @@ require_once("system.php");?>
         var d;
         Dados = Dados.reverse();
         for(var i = 0; i < 40; i++){
+            d = Date.now() / 1000;
+            d -= Dados[i]["date"];
+            d /= 60;
+            d = d.toFixed(2);
+            document.getElementById("mercado-" + i).title = "Tempo: " + d + " minutos";
             d = new Date(Dados[i]["date"] * 1000);
             document.getElementById("mercado-" + i + "-0").innerHTML = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
             if(Dados[i]["type"] == "buy"){
@@ -138,7 +143,7 @@ require_once("system.php");?>
                 <tr><th colspan="4">Ordens executadas</th></tr>
                 <tr><th>Hora</th><th>Tipo</th><th>Quantia</th><th>Valor</th></tr><?php
                 for($i = 0; $i < 40; $i++){
-                    echo "<tr>
+                    echo "<tr id=\"mercado-".$i."\">
                     <td id=\"mercado-".$i."-0\"></td>
                     <td id=\"mercado-".$i."-1\"></td>
                     <td id=\"mercado-".$i."-2\"></td>

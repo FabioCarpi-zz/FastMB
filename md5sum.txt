@@ -9,10 +9,10 @@ ea0192f2184c13de9c170a07efd2873b C:\GitHub\FastMB\www\functions.php
 ec38ed84e06ec865009d7d22a591297b C:\GitHub\FastMB\www\global.css
 823c77b4e18309b453347cf0a45ed2b1 C:\GitHub\FastMB\www\head.php
 3d04bac1fc69cdd51f284f8a5cd9bb31 C:\GitHub\FastMB\www\index.php
-62aafab317e92411bbd8e80324c91681 C:\GitHub\FastMB\www\mercadobtc.php
-51e890792602034c142c97089760443d C:\GitHub\FastMB\www\mercadoltc.php
+8657b3df574e9a9abd602c3cd50cfb91 C:\GitHub\FastMB\www\mercadobtc.php
+be257ff2475e616428d5aed792d42e4c C:\GitHub\FastMB\www\mercadoltc.php
 1bd670a11cc62600ca3a8f821c34c78f C:\GitHub\FastMB\www\ordens.php
 a750e840490ab9d771fe14c1352d3c72 C:\GitHub\FastMB\www\simulador.php
 f7549e7f03348114711e052c0c7e3269 C:\GitHub\FastMB\www\system.php
 dc90293c7b580bdd8310655596a7d2a6 C:\GitHub\FastMB\www\translate.php
-8b6685dd7362245e3ff050818e1cbf3b C:\GitHub\FastMB\www\versao.txt
+0fe0018dec86e5f3f212e056ee88e9fb C:\GitHub\FastMB\www\versao.txt
