@@ -18,14 +18,20 @@ if(isset($_GET["Action"])){
                 Negociações: <a href="#" onclick="Ajax('mercadobtc.php','AjaxPagina');">Bitcoins</a> -
                 <a href="#" onclick="Ajax('mercadoltc.php','AjaxPagina');">Litecoin</a><br> 
                 Ordens: <a href="#" onclick="Ajax('ordens.php?Action=Form','AjaxJanelaNovaConteudo');
-                    document.getElementById('AjaxJanelaNova').style.visibility = 'visible';"
+                    var e = document.getElementById('AjaxJanelaNova');
+                    e.style.visibility = 'visible';
+                    e.style.overflow = 'auto';"
                 >Nova</a> -
                 <a href="#" onclick="Ajax('concluidas.php','AjaxJanelaConcluidasConteudo');
-                    document.getElementById('AjaxJanelaConcluidas').style.visibility = 'visible';
-                    document.getElementById('AjaxJanelaConcluidas').style.height = (window.innerHeight / 1.1) + 'px';"
+                    var e = document.getElementById('AjaxJanelaConcluidas');
+                    e.style.visibility = 'visible';
+                    e.style.overflow = 'auto';
+                    e.style.height = (window.innerHeight / 1.1) + 'px';"
                 >Concluídas</a> - 
                 <a href="#" onclick="Ajax('simulador.php','AjaxJanelaSimuladorConteudo');
-                    document.getElementById('AjaxJanelaSimulador').style.visibility = 'visible';"
+                    var e = document.getElementById('AjaxJanelaSimulador');
+                    e.style.visibility = 'visible';
+                    e.style.overflow = 'auto';"
                 >Simulador</a>
             </td>
             <td rowspan="3" style="vertical-align:top;width:50%;">
@@ -41,21 +47,30 @@ if(isset($_GET["Action"])){
     </table>
     <div id="AjaxJanelaConcluidas">
         <div id="AjaxJanelaConcluidasTitulo" style="text-align:right;background-color:#3366ff;">
-            <img src="close.gif" onclick="document.getElementById('AjaxJanelaConcluidas').style.visibility = 'hidden';">
+            <img src="close.gif" onclick="
+                var e = document.getElementById('AjaxJanelaConcluidas');
+                e.style.visibility = 'hidden';
+                e.style.overflow = 'hidden';">
         </div>
-        <div id="AjaxJanelaConcluidasConteudo" style="overflow:auto;text-align:center;"></div>
+        <div id="AjaxJanelaConcluidasConteudo" style="text-align:center;"></div>
     </div>
     <div id="AjaxJanelaSimulador">
         <div id="AjaxJanelaSimuladorTitulo" style="text-align:right;background-color:#3366ff;">
-            <img src="close.gif" onclick="document.getElementById('AjaxJanelaSimulador').style.visibility = 'hidden';">
+            <img src="close.gif" onclick="
+                var e = document.getElementById('AjaxJanelaSimulador');
+                e.style.visibility = 'hidden';
+                e.style.overflow = 'hidden';">
         </div>
-        <div id="AjaxJanelaSimuladorConteudo" style="overflow:auto;text-align:center;"></div>
+        <div id="AjaxJanelaSimuladorConteudo" style="text-align:center;"></div>
     </div>
     <div id="AjaxJanelaNova">
         <div id="AjaxJanelaNovaTitulo" style="text-align:right;background-color:#3366ff;">
-            <img src="close.gif" onclick="document.getElementById('AjaxJanelaNova').style.visibility = 'hidden';">
+            <img src="close.gif" onclick="
+                var e = document.getElementById('AjaxJanelaNova');
+                e.style.visibility = 'hidden';
+                e.style.overflow = 'hidden';">
         </div>
-        <div id="AjaxJanelaNovaConteudo" style="overflow:auto;text-align:center;"></div>
+        <div id="AjaxJanelaNovaConteudo" style="text-align:center;"></div>
     </div>
     <script>
         Ajax("index.php?Action=Saldo", "AjaxSaldo", null, true);

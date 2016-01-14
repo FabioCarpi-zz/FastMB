@@ -3,14 +3,13 @@ a{text-decoration:none; color:#00f;}
 a:hover{text-decoration:underline;}
 table.Center{margin-left:auto; margin-right:auto;}
 
-#AjaxJanelaNova{
+#AjaxJanelaConcluidas{
     border:solid 1px #000;
     background-color:#fff;
     visibility:hidden;
     position:absolute;
-    top:135px;
-    left:400px;
-    height:290px;
+    top:60px;
+    left:550px;
 }
 
 #AjaxJanelaSimulador{
@@ -23,11 +22,12 @@ table.Center{margin-left:auto; margin-right:auto;}
     height:370px;
 }
 
-#AjaxJanelaConcluidas{
+#AjaxJanelaNova{
     border:solid 1px #000;
     background-color:#fff;
     visibility:hidden;
     position:absolute;
-    top:60px;
-    left:550px;
+    top:135px;
+    left:400px;
+    height:290px;
 }

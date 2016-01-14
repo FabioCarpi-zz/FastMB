@@ -34,8 +34,8 @@ if(isset($_GET["action"])){
                 <td style="text-align:center;"><?php echo $linha["volume"];?></td>
                 <td style="text-align:center;"><?php echo $linha["price"];?></td>
                 <td style="text-align:center;"><?php echo number_format($linha["volume"] * $linha["price"], 5);?></td>
-                <td style="text-align:center;"><?php echo date("d/m/Y H:i:s", $linha["created"]);?></td>
-                <td style="text-align:center;"><?php
+                <td style="text-align:center;white-space:nowrap;"><?php echo date("d/m/Y H:i:s", $linha["created"]);?></td>
+                <td style="text-align:center;white-space:nowrap;"><?php
                     foreach($linha["operations"] as $linha2){
                         echo date("d/m/Y H:i:s", $linha2["created"])." (".$linha2["rate"]."%)<br>";
                         $temp = $linha2["created"];
