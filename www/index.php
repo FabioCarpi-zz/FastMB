@@ -32,7 +32,7 @@ if(isset($_GET["Action"])){
                     e.style.visibility = 'visible';"
                 >Simulador</a>
             </td>
-            <td rowspan="3" style="vertical-align:top;width:50%;">
+            <td rowspan="3" style="border:none;vertical-align:top;width:50%;">
                 <iframe src="https://www.tradingview.com/chart/8rG7IftD/" width="100%" id="chart"></iframe>
             </td>
         </tr>

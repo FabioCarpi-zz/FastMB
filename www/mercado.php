@@ -43,7 +43,7 @@ require_once("system.php");?>
         var soma1 = 0, soma2 = 0, conta1 = 0, conta2 = 0;
         for(var i = 0; i < 40; i++){
             var temp = parseFloat(Dados["bids"][i][1]);
-            if(<?php echo $_GET["pair"];?> == "btc"){
+            if("<?php echo $_GET["pair"];?>" == "btc"){
                 if(temp >= 10 == true){
                     document.getElementById("1ordem-" + i).style.backgroundColor = "#ff4500";
                 }else if(temp >= 5 == true){
@@ -64,7 +64,7 @@ require_once("system.php");?>
             document.getElementById("1ordem-" + i + "-1").innerHTML = Dados["bids"][i][0];
             
             temp = parseFloat(Dados["asks"][i][1]);
-            if(<?php echo $_GET["pair"];?> == "btc"){
+            if("<?php echo $_GET["pair"];?>" == "btc"){
                 if(temp >= 10 == true){
                     document.getElementById("2ordem-" + i).style.backgroundColor = "#ff4500";
                 }else if(temp >= 5 == true){
@@ -84,7 +84,7 @@ require_once("system.php");?>
             document.getElementById("2ordem-" + i + "-0").innerHTML = Dados["asks"][i][1];
             document.getElementById("2ordem-" + i + "-1").innerHTML = Dados["asks"][i][0];
         }
-        if(<?php echo $_GET["pair"];?> == "btc"){
+        if("<?php echo $_GET["pair"];?>" == "btc"){
             setTimeout(function (){
                 TempoReal(1);
             }, Tempo * 1000);
@@ -112,7 +112,7 @@ require_once("system.php");?>
             document.getElementById("mercado-" + i + "-2").innerHTML = Dados[i]["amount"];
             document.getElementById("mercado-" + i + "-3").innerHTML = Dados[i]["price"];
         }
-        if(<?php echo $_GET["pair"];?> == "btc"){
+        if("<?php echo $_GET["pair"];?>" == "btc"){
             setTimeout(function (){
                 TempoReal(2);
             }, Tempo * 1000);
