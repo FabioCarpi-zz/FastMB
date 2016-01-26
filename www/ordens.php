@@ -99,8 +99,6 @@ if(isset($_GET["Action"])){
             <th>Valor</th>
             <th>Auto venda</th>
             <th>Auto compra</th>
-            <th>Mínimo</th>
-            <th>Máximo</th>
         </tr><?php
         $_SESSION["Temp"]["Precos"] = array();
         foreach($_SESSION["Temp"]["btc"]["MyOrdens"] as $id => $linha){?>
@@ -129,8 +127,6 @@ if(isset($_GET["Action"])){
                         echo $_SESSION["Config"]["Auto"]["btc"][$id]["compra"];
                     }?>
                 </td>
-                <td style="text-align:center;"><?php if(isset($_SESSION["Config"]["Bot"][$id])){echo $_SESSION["Config"]["Bot"][$id]["min"];}?></td>
-                <td style="text-align:center;"><?php if(isset($_SESSION["Config"]["Bot"][$id])){echo $_SESSION["Config"]["Bot"][$id]["max"];}?></td>
             </tr><?php
         }
         foreach($_SESSION["Temp"]["ltc"]["MyOrdens"] as $id => $linha){?>
@@ -154,8 +150,6 @@ if(isset($_GET["Action"])){
                         echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compra"];
                     }?>
                 </td>
-                <td style="text-align:center;"><?php if(isset($_SESSION["Config"]["Bot"][$id])){echo $_SESSION["Config"]["Bot"][$id]["min"];}?></td>
-                <td style="text-align:center;"><?php if(isset($_SESSION["Config"]["Bot"][$id])){echo $_SESSION["Config"]["Bot"][$id]["max"];}?></td>
             </tr><?php
         }?>
     </table><?php
