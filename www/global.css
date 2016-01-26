@@ -13,7 +13,7 @@ td{border:solid 1px #000;}
     position:absolute;
     top:60px;
     left:550px;
-    width:600px;
+    width:780px;
     height:500px;
     overflow-x:no-content;
 }
@@ -25,8 +25,8 @@ td{border:solid 1px #000;}
     position:absolute;
     top:60px;
     left:620px;
-    width:290px;
-    height:370px;
+    width:250px;
+    height:365px;
 }
 
 #AjaxJanelaNova{

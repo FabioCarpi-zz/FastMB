@@ -109,7 +109,12 @@ if(isset($_GET["Action"])){
                     <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=btc&id=<?php echo $id;?>; else return false;','AjaxOrdens')"><img src="del.gif" alt=""></a>
                 </td>
                 <td style="text-align:center;">BTC</td>
-                <td style="text-align:center;"><?php echo $linha["type"] == "buy"? "Compra": "Venda"; echo " (".count($linha["operations"]).")";?></td>
+                <td style="text-align:center;"><?php if($linha["type"] == "buy"){?>
+                    <span style="color:#0a0">Compra</span><?php
+                }else{?>
+                    <span style="color:#c00">Venda</span><?php
+                }
+                echo " (".count($linha["operations"]).")";?></td>
                 <td style="text-align:center;"><?php echo $linha["volume"];?></td>
                 <td style="text-align:center;"><?php echo $_SESSION["Temp"]["Precos"][] = $linha["price"];?></td>
                 <td style="text-align:center;"><?php

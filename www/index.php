@@ -12,9 +12,11 @@ if(isset($_GET["Action"])){
     require_once("head.php");?>
     <table class="Center" style="border:none;width:100%">
         <tr>
-            <td style="text-align:center;width:20%;border:none;" id="AjaxSaldo"></td>
+            <td style="text-align:center;width:200px;border:none;" id="AjaxSaldo"></td>
             <td style="text-align:center;border:none;">
-                Versão <?php echo file_get_contents("versao.txt");?> de <?php echo file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/www/versao.txt");?><br>
+                Versão <?php echo file_get_contents("versao.txt");?> / <?php echo file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/www/versao.txt");?><br>
+                <?php PhpLiveImport("debug");?>
+                PHP: <?php echo phpversion();?> / <?php echo PhpUpdate();?><br>
                 Negociações: <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxPagina');">Bitcoins</a> -
                 <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxPagina');">Litecoin</a><br> 
                 Ordens: <a href="#" onclick="Ajax('ordens.php?Action=Form','AjaxJanelaNovaConteudo');
@@ -48,7 +50,7 @@ if(isset($_GET["Action"])){
             <img src="close.gif" onclick="
                 var e = document.getElementById('AjaxJanelaConcluidas');
                 e.style.visibility = 'hidden';
-                e.style.overflow = 'hidden';">
+                e.style.overflow = 'hidden';" alt="">
         </div>
         <div id="AjaxJanelaConcluidasConteudo" style="text-align:center;"></div>
     </div>
@@ -56,7 +58,7 @@ if(isset($_GET["Action"])){
         <div id="AjaxJanelaSimuladorTitulo" style="text-align:right;background-color:#3366ff;">
             <img src="close.gif" onclick="
                 var e = document.getElementById('AjaxJanelaSimulador');
-                e.style.visibility = 'hidden';">
+                e.style.visibility = 'hidden';" alt="">
         </div>
         <div id="AjaxJanelaSimuladorConteudo" style="text-align:center;"></div>
     </div>
@@ -64,7 +66,7 @@ if(isset($_GET["Action"])){
         <div id="AjaxJanelaNovaTitulo" style="text-align:right;background-color:#3366ff;">
             <img src="close.gif" onclick="
                 var e = document.getElementById('AjaxJanelaNova');
-                e.style.visibility = 'hidden';">
+                e.style.visibility = 'hidden';" alt="">
         </div>
         <div id="AjaxJanelaNovaConteudo" style="text-align:center;"></div>
     </div>

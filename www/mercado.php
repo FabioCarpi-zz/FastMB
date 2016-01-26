@@ -7,7 +7,6 @@ require_once("system.php");?>
     TempoReal(2);
     
     function TempoReal(Tipo){
-        var Dados;
         if(typeof ObjetoAjax["TempoReal" + Tipo] == "undefined"){
             try{
                 ObjetoAjax["TempoReal" + Tipo] = new ActiveXObject("Msxml2.XMLHTTP");
@@ -40,9 +39,9 @@ require_once("system.php");?>
     }
     
     function PovoarOrdens(Dados){
-        var soma1 = 0, soma2 = 0, conta1 = 0, conta2 = 0;
+        var soma1 = 0, soma2 = 0, conta1 = 0, conta2 = 0, temp;
         for(var i = 0; i < 40; i++){
-            var temp = parseFloat(Dados["bids"][i][1]);
+            temp = parseFloat(Dados["bids"][i][1]);
             if("<?php echo $_GET["pair"];?>" == "btc"){
                 if(temp >= 10 == true){
                     document.getElementById("1ordem-" + i).style.backgroundColor = "#ff4500";
