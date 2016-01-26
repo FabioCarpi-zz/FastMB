@@ -59,8 +59,13 @@ require_once("system.php");?>
                 "\nVolume na frente: " + soma1.toFixed(8);
             soma1 += Dados["bids"][i][1];
             conta1++;
-            document.getElementById("1ordem-" + i + "-0").innerHTML = Dados["bids"][i][1];
-            document.getElementById("1ordem-" + i + "-1").innerHTML = Dados["bids"][i][0];
+            if(document.getElementById("1ordem-" + i + "-2").innerHTML > Dados["bids"][i][0]){
+                document.getElementById("1ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_down_big.gif\" alt=\"\">";
+            }else if(document.getElementById("1ordem-" + i + "-2").innerHTML < Dados["bids"][i][0]){
+                document.getElementById("1ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_up_big.gif\" alt=\"\">";
+            }
+            document.getElementById("1ordem-" + i + "-1").innerHTML = Dados["bids"][i][1];
+            document.getElementById("1ordem-" + i + "-2").innerHTML = Dados["bids"][i][0];
             
             temp = parseFloat(Dados["asks"][i][1]);
             if("<?php echo $_GET["pair"];?>" == "btc"){
@@ -80,8 +85,13 @@ require_once("system.php");?>
                 "\nVolume na frente: " + soma2.toFixed(8);
             soma2 += Dados["bids"][i][1];
             conta2++;
-            document.getElementById("2ordem-" + i + "-0").innerHTML = Dados["asks"][i][1];
-            document.getElementById("2ordem-" + i + "-1").innerHTML = Dados["asks"][i][0];
+            if(document.getElementById("2ordem-" + i + "-2").innerHTML > Dados["asks"][i][0]){
+                document.getElementById("2ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_down_big.gif\" alt=\"\">";
+            }else if(document.getElementById("2ordem-" + i + "-2").innerHTML < Dados["asks"][i][0]){
+                document.getElementById("2ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_up_big.gif\" alt=\"\">";
+            }
+            document.getElementById("2ordem-" + i + "-1").innerHTML = Dados["asks"][i][1];
+            document.getElementById("2ordem-" + i + "-2").innerHTML = Dados["asks"][i][0];
         }
         if("<?php echo $_GET["pair"];?>" == "btc"){
             setTimeout(function (){
@@ -123,24 +133,34 @@ require_once("system.php");?>
     <tr>
         <td style="vertical-align:top;border:none;">
             <table id="OrdensCompra">
-                <tr><th colspan="2">Ordens de compra</th></tr>
-                <tr><th>Quantia</th><th>Valor</th></tr><?php
+                <tr><th colspan="3">Ordens de compra</th></tr>
+                <tr>
+                    <td></td>
+                    <th>Quantia</th>
+                    <th>Valor</th>
+                </tr><?php
                 for($i = 0; $i < 40; $i++){
                     echo "<tr id=\"1ordem-".$i."\">
                     <td id=\"1ordem-".$i."-0\"></td>
                     <td id=\"1ordem-".$i."-1\"></td>
+                    <td id=\"1ordem-".$i."-2\"></td>
                     </tr>";
                 }?>
             </table>
         </td>
         <td style="vertical-align:top;border:none;">
             <table id="OrdensVenda">
-                <tr><th colspan="2">Ordens de venda</th></tr>
-                <tr><th>Quantia</th><th>Valor</th></tr><?php
+                <tr><th colspan="3">Ordens de venda</th></tr>
+                <tr>
+                    <td></td>
+                    <th>Quantia</th>
+                    <th>Valor</th>
+                </tr><?php
                 for($i = 0; $i < 40; $i++){
                     echo "<tr id=\"2ordem-".$i."\">
                     <td id=\"2ordem-".$i."-0\"></td>
                     <td id=\"2ordem-".$i."-1\"></td>
+                    <td id=\"2ordem-".$i."-2\"></td>
                     </tr>";
                 }?>
             </table>

@@ -106,7 +106,9 @@ if(isset($_GET["Action"])){
         foreach($_SESSION["Temp"]["btc"]["MyOrdens"] as $id => $linha){?>
             <tr>
                 <td>
-                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=btc&id=<?php echo $id;?>; else return false;','AjaxOrdens')"><img src="del.gif" alt=""></a>
+                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=btc&id=<?php echo $id;?>; else return false;','AjaxOrdens')">
+                        <img src="http://public-img.protocollive.com.br/del.gif" alt="">
+                    </a>
                 </td>
                 <td style="text-align:center;">BTC</td>
                 <td style="text-align:center;"><?php if($linha["type"] == "buy"){?>
@@ -134,7 +136,9 @@ if(isset($_GET["Action"])){
         foreach($_SESSION["Temp"]["ltc"]["MyOrdens"] as $id => $linha){?>
             <tr>
                 <td>
-                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=ltc&id=<?php echo $id;?>; else return false;','AjaxOrdens')"><img src="del.gif" alt=""></a>
+                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=ltc&id=<?php echo $id;?>; else return false;','AjaxOrdens')">
+                        <img src="http://public-img.protocollive.com.br/del.gif" alt="">
+                    </a>
                 </td>
                 <td style="text-align:center;">LTC</td>
                 <td style="text-align:center;"><?php echo $linha["type"] == "buy"? "Compra": "Venda"; echo " (".count($linha["operations"]).")";?></td>
