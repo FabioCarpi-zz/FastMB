@@ -25,7 +25,7 @@ function Ajax(Url, Retorno, Dados, Atualizar){
             if(Atualizar == true){
                 Atualizacoes[Retorno] = setTimeout(function (){
                     Ajax(Url, Retorno, null, true);
-                }, 30 * 1000);
+                }, 60 * 1000);
             }
             Executar(Retorno);
 			document.body.style.cursor = "default";

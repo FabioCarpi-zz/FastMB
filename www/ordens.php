@@ -4,7 +4,15 @@ require_once("system.php");
 if(isset($_GET["Action"])){
     if($_GET["Action"] == "Form"){
         Update("Saldos");?>
-        <script>TimerStop("AjaxPagina");</script>
+        <script>
+            function Atualizar(){
+                var num = document.ordem.valor.value * 1.01;
+                document.ordem.valor2.value = num.toFixed(5);
+                document.ordem.autovenda2.value = parseFloat(document.ordem.valor.value) + ((document.ordem.valor.value * document.ordem.autovenda.value) / 100);
+                num = parseFloat(document.ordem.autovenda2.value) - (document.ordem.autovenda2.value * document.ordem.autocompra.value / 100);
+                document.ordem.autocompra2.value = num.toFixed(5);
+            }
+        </script>
         <form name="ordem">
             Moeda: <select name="pair">
                 <option value="btc">Bitcoin</option>
@@ -15,12 +23,9 @@ if(isset($_GET["Action"])){
                 <option value="sell">Vender</option>
             </select><br>
             Valor: 
-            <input type="text" name="valor" size="7" onkeyup="
-                num = document.ordem.valor.value * 1.01;
-                document.ordem.valor2.value = num.toFixed(5);
-            ">
+            <input type="text" name="valor" size="7" onchange="Atualizar();" onkeyup="Atualizar();" onfocus="this.select();">
             <input type="text" name="valor2" size="7" disabled><br>
-            Quantidade: <input type="text" name="volume" size="7">
+            Quantidade: <input type="text" name="volume" size="10">
             <input type="button" value="&lt;&lt;" onclick="
                 if(document.ordem.tipo.value == 'buy'){
                     num = <?php echo $_SESSION["Temp"]["Saldos"]["brl"];?> / document.ordem.valor.value;
@@ -30,13 +35,8 @@ if(isset($_GET["Action"])){
                 }else if(document.ordem.tipo.value == 'sell' && document.ordem.pair.value == 'ltc'){
                     document.ordem.volume.value = <?php echo $_SESSION["Temp"]["Saldos"]["ltc"];?>
                 }"><br>
-            Auto venda: <input type="text" name="autovenda" size="2" onkeyup="
-                document.ordem.autovenda2.value = parseFloat(document.ordem.valor.value) + ((document.ordem.valor.value * document.ordem.autovenda.value) / 100);
-            "><input type="text" name="autovenda2" size="7" disabled><br>
-            Auto compra: <input type="text" name="autocompra" size="2" onkeyup="
-                num = parseFloat(document.ordem.autovenda2.value) - (document.ordem.autovenda2.value * document.ordem.autocompra.value / 100);
-                document.ordem.autocompra2.value = num.toFixed(5);
-            "><input type="text" name="autocompra2" size="7" disabled><br>
+            Auto venda: <input type="text" name="autovenda" size="2" onchange="Atualizar();" onkeyup="Atualizar();"><input type="text" name="autovenda2" size="7" disabled><br>
+            Auto compra: <input type="text" name="autocompra" size="2" onchange="Atualizar();" onkeyup="Atualizar();"><input type="text" name="autocompra2" size="7" disabled><br>
             <br>
             <input type="button" value=" Criar " onclick="Ajax('ordens.php?Action=New','AjaxSave',
                 'pair='+document.ordem.pair.value+
@@ -59,14 +59,6 @@ if(isset($_GET["Action"])){
                     "venda" => number_format($temp = $_POST["valor"] + (($_POST["valor"] * $_POST["autovenda"]) / 100), 5),
                     "compra" => number_format($temp - (($temp * $_POST["autocompra"]) / 100), 5)
                 );
-                if($_POST["min"] != "" and $_POST["max"] != ""){
-                    $_SESSION["Config"]["Bot"][key($dados["return"])] = array(
-                        "moeda" => $_POST["pair"],
-                        "tipo" => $_POST["tipo"],
-                        "min" => $_POST["min"],
-                        "max" => $_POST["max"]
-                    );
-                }
                 ConfigSave();
             }
         }else{
@@ -92,7 +84,7 @@ if(isset($_GET["Action"])){
     $_SESSION["Temp"]["Auto"] = array();?>
     <table class="Center">
         <tr>
-            <td id="TimerOrdens">30</td>
+            <td id="TimerOrdens">60</td>
             <th>Moeda</th>
             <th>Tipo</th>
             <th>Volume</th>

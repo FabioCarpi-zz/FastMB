@@ -18,9 +18,9 @@ if(isset($_GET["action"])){
             <th>Tipo</th>
             <th>Volume</th>
             <th>Valor</th>
-            <th>Total</th>
             <th>Criação</th>
             <th>Execução (Taxa)</th>
+            <th>Total</th>
             <th>Dias</th>
         </tr><?php
         $dados = MB("OrderList&pair=btc_brl&status=completed");
@@ -33,7 +33,6 @@ if(isset($_GET["action"])){
                     "<span style=\"color:#f00\">Venda</span>";?></td>
                 <td style="text-align:center;"><?php echo $linha["volume"];?></td>
                 <td style="text-align:center;"><?php echo $linha["price"];?></td>
-                <td style="text-align:center;"><?php echo number_format($linha["volume"] * $linha["price"], 5);?></td>
                 <td style="text-align:center;white-space:nowrap;"><?php echo date("d/m/Y H:i:s", $linha["created"]);?></td>
                 <td style="text-align:center;white-space:nowrap;"><?php
                     foreach($linha["operations"] as $linha2){
@@ -42,7 +41,14 @@ if(isset($_GET["action"])){
                     }?>
                 </td>
                 <td style="text-align:center;"><?php
-                    $temp = ($temp-$linha["created"]) / (60*60*24);
+                    foreach($linha["operations"] as $linha2){
+                        $temp2 = $linha2["volume"] - ($linha2["volume"] * $linha2["rate"] / 100);
+                        $temp2 = $temp2 * $linha2["price"];
+                        echo number_format($temp2, 5)."<br>";
+                    }?>
+                </td>
+                <td style="text-align:center;"><?php
+                    $temp = ($temp - $linha["created"]) / (60*60*24);
                     echo number_format($temp, 4);?>
                 </td>
             </tr><?php
@@ -54,9 +60,9 @@ if(isset($_GET["action"])){
             <th>Tipo</th>
             <th>Volume</th>
             <th>Valor</th>
-            <th>Total</th>
             <th>Criação</th>
             <th>Execução (Taxa)</th>
+            <th>Total</th>
             <th>Dias</th>
         </tr><?php
         $dados = MB("OrderList&pair=ltc_brl&status=completed");
@@ -68,12 +74,18 @@ if(isset($_GET["action"])){
                     "<span style=\"color:#f00\">Venda</span>";?></td>
                 <td style="text-align:center;"><?php echo $linha["volume"];?></td>
                 <td style="text-align:center;"><?php echo $linha["price"];?></td>
-                <td style="text-align:center;"><?php echo number_format($linha["volume"] * $linha["price"], 5);?></td>
                 <td style="text-align:center;"><?php echo date("d/m/Y H:i:s", $linha["created"]);?></td>
                 <td style="text-align:center;"><?php
                     foreach($linha["operations"] as $linha2){
                         echo date("d/m/Y H:i:s", $linha2["created"])." (".$linha2["rate"]."%)<br>";
                         $temp = $linha2["created"];
+                    }?>
+                </td>
+                <td style="text-align:center;"><?php
+                    foreach($linha["operations"] as $linha2){
+                        $temp2 = $linha2["volume"] - ($linha2["volume"] * $linha2["rate"] / 100);
+                        $temp2 = $temp2 * $linha2["price"];
+                        echo number_format($temp2, 5)."<br>";
                     }?>
                 </td>
                 <td style="text-align:center;"><?php
