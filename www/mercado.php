@@ -83,7 +83,7 @@ require_once("system.php");?>
             document.getElementById("2ordem-" + i).title = "1% = " + temp.toFixed(5) + 
                 "\nOrdens na frente: " + conta2 +
                 "\nVolume na frente: " + soma2.toFixed(8);
-            soma2 += Dados["bids"][i][1];
+            soma2 += Dados["asks"][i][1];
             conta2++;
             if(document.getElementById("2ordem-" + i + "-2").innerHTML > Dados["asks"][i][0]){
                 document.getElementById("2ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_down_big.gif\" alt=\"\">";
