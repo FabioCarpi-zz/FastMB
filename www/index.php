@@ -3,10 +3,12 @@ require_once("system.php");
 
 if(isset($_GET["Action"])){
     if($_GET["Action"] == "Saldo"){
-        Update("Saldos");?>
-        BRL: <span id="brl"><?php echo $_SESSION["Temp"]["Saldos"]["brl"];?></span><br>
-        BTC: <span id="btc"><?php echo $_SESSION["Temp"]["Saldos"]["btc"];?></span><br>
-        LTC: <span id="ltc"><?php echo $_SESSION["Temp"]["Saldos"]["ltc"];?></span><?php
+        Update("Saldos");
+        if(isset($_SESSION["Temp"]["Saldos"])){?>
+            BRL: <span id="brl"><?php echo $_SESSION["Temp"]["Saldos"]["brl"];?></span><br>
+            BTC: <span id="btc"><?php echo $_SESSION["Temp"]["Saldos"]["btc"];?></span><br>
+            LTC: <span id="ltc"><?php echo $_SESSION["Temp"]["Saldos"]["ltc"];?></span><?php
+        }
     }
 }else{
     require_once("head.php");?>
@@ -45,6 +47,7 @@ if(isset($_GET["Action"])){
             <td style="text-align:center;border:none;vertical-align:top;" colspan="2" id="AjaxPagina"></td>
         </tr>
     </table>
+
     <div id="AjaxJanelaConcluidas">
         <div id="AjaxJanelaConcluidasTitulo" style="text-align:right;background-color:#3366ff;">
             <img src="http://public-img.protocollive.com.br/close.gif" onclick="
@@ -54,6 +57,7 @@ if(isset($_GET["Action"])){
         </div>
         <div id="AjaxJanelaConcluidasConteudo" style="text-align:center;"></div>
     </div>
+
     <div id="AjaxJanelaSimulador">
         <div id="AjaxJanelaSimuladorTitulo" style="text-align:right;background-color:#3366ff;">
             <img src="http://public-img.protocollive.com.br/close.gif" onclick="
@@ -62,6 +66,7 @@ if(isset($_GET["Action"])){
         </div>
         <div id="AjaxJanelaSimuladorConteudo" style="text-align:center;"></div>
     </div>
+
     <div id="AjaxJanelaNova">
         <div id="AjaxJanelaNovaTitulo" style="text-align:right;background-color:#3366ff;">
             <img src="http://public-img.protocollive.com.br/close.gif" onclick="
@@ -70,6 +75,10 @@ if(isset($_GET["Action"])){
         </div>
         <div id="AjaxJanelaNovaConteudo" style="text-align:center;"></div>
     </div>
+    
+    <div id="AjaxMenuOrdens">
+    </div>
+
     <script>
         Ajax("index.php?Action=Saldo", "AjaxSaldo", null, true);
         Ajax("ordens.php?pair=btc", "AjaxOrdens", null, true);

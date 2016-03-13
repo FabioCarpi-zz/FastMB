@@ -48,17 +48,17 @@ function ConfigSave(){
 function Update($Tipo = null){
     if($Tipo == null or strtolower($Tipo) == strtolower("Saldos")){
         @$dados = MB("getInfo");
-        if(!is_null($dados)){
+        if(!is_null($dados) and $dados["success"] == 1){
             $_SESSION["Temp"]["Saldos"] = $dados["return"]["funds"];
         }
     }
     if($Tipo == null or $Tipo == "MyOrdens"){
         @$dados = MB("OrderList&pair=btc_brl&status=active");
-        if(!is_null($dados)){
+        if(!is_null($dados) and $dados["success"] == 1){
             $_SESSION["Temp"]["btc"]["MyOrdens"] = $dados["return"];
         }
         @$dados = MB("OrderList&pair=ltc_brl&status=active");
-        if(!is_null($dados)){
+        if(!is_null($dados) and $dados["success"] == 1){
             $_SESSION["Temp"]["ltc"]["MyOrdens"] = $dados["return"];
         }
     }

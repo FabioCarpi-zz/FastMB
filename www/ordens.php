@@ -23,7 +23,7 @@ if(isset($_GET["Action"])){
                 <option value="sell">Vender</option>
             </select><br>
             Valor: 
-            <input type="text" name="valor" size="7" onchange="Atualizar();" onkeyup="Atualizar();" onfocus="this.select();">
+            <input type="text" name="valor" size="7" onchange="Atualizar();" onkeyup="Atualizar();" onclick="this.select();">
             <input type="text" name="valor2" size="7" disabled><br>
             Quantidade: <input type="text" name="volume" size="10">
             <input type="button" value="&lt;&lt;" onclick="
@@ -84,7 +84,10 @@ if(isset($_GET["Action"])){
     $_SESSION["Temp"]["Auto"] = array();?>
     <table class="Center">
         <tr>
-            <td id="TimerOrdens">60</td>
+            <td id="TimerOrdens" onclick="
+                Ajax('index.php?Action=Saldo', 'AjaxSaldo', null, true);
+                Ajax('ordens.php?pair=btc', 'AjaxOrdens', null, true);
+            ">60</td>
             <th>Moeda</th>
             <th>Tipo</th>
             <th>Volume</th>
@@ -93,56 +96,58 @@ if(isset($_GET["Action"])){
             <th>Auto compra</th>
         </tr><?php
         $_SESSION["Temp"]["Precos"] = array();
-        foreach($_SESSION["Temp"]["btc"]["MyOrdens"] as $id => $linha){?>
-            <tr>
-                <td>
-                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=btc&id=<?php echo $id;?>; else return false;','AjaxOrdens')">
-                        <img src="http://public-img.protocollive.com.br/del.gif" alt="">
-                    </a>
-                </td>
-                <td style="text-align:center;">BTC</td>
-                <td style="text-align:center;"><?php if($linha["type"] == "buy"){?>
-                    <span style="color:#0a0">Compra</span><?php
-                }else{?>
-                    <span style="color:#c00">Venda</span><?php
-                }
-                echo " (".count($linha["operations"]).")";?></td>
-                <td style="text-align:center;"><?php echo $linha["volume"];?></td>
-                <td style="text-align:center;"><?php echo $_SESSION["Temp"]["Precos"][] = $linha["price"];?></td>
-                <td style="text-align:center;"><?php
-                    if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["venda"])){
-                        echo $_SESSION["Config"]["Auto"]["btc"][$id]["venda"];
-                    }?>
-                </td>
-                <td style="text-align:center;"><?php
-                    if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["compra"])){
-                        echo $_SESSION["Config"]["Auto"]["btc"][$id]["compra"];
-                    }?>
-                </td>
-            </tr><?php
-        }
-        foreach($_SESSION["Temp"]["ltc"]["MyOrdens"] as $id => $linha){?>
-            <tr>
-                <td>
-                    <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=ltc&id=<?php echo $id;?>; else return false;','AjaxOrdens')">
-                        <img src="http://public-img.protocollive.com.br/del.gif" alt="">
-                    </a>
-                </td>
-                <td style="text-align:center;">LTC</td>
-                <td style="text-align:center;"><?php echo $linha["type"] == "buy"? "Compra": "Venda"; echo " (".count($linha["operations"]).")";?></td>
-                <td style="text-align:center;"><?php echo $linha["volume"];?></td>
-                <td style="text-align:center;"><?php echo $_SESSION["Temp"]["Precos"][] = $linha["price"];?></td>
-                <td style="text-align:center;"><?php
-                    if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["venda"])){
-                        echo $_SESSION["Config"]["Auto"]["ltc"][$id]["venda"];
-                    }?>
-                </td>
-                <td style="text-align:center;"><?php
-                    if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["compra"])){
-                        echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compra"];
-                    }?>
-                </td>
-            </tr><?php
+        if(isset($_SESSION["Temp"]["btc"])){
+            foreach($_SESSION["Temp"]["btc"]["MyOrdens"] as $id => $linha){?>
+                <tr>
+                    <td>
+                        <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=btc&id=<?php echo $id;?>; else return false;','AjaxOrdens')">
+                            <img src="http://public-img.protocollive.com.br/del.gif" alt="">
+                        </a>
+                    </td>
+                    <td style="text-align:center;">BTC</td>
+                    <td style="text-align:center;"><?php if($linha["type"] == "buy"){?>
+                        <span style="color:#0a0">Compra</span><?php
+                    }else{?>
+                        <span style="color:#c00">Venda</span><?php
+                    }
+                    echo " (".count($linha["operations"]).")";?></td>
+                    <td style="text-align:center;"><?php echo $linha["volume"];?></td>
+                    <td style="text-align:center;"><?php echo $_SESSION["Temp"]["Precos"][] = $linha["price"];?></td>
+                    <td style="text-align:center;"><?php
+                        if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["venda"])){
+                            echo $_SESSION["Config"]["Auto"]["btc"][$id]["venda"];
+                        }?>
+                    </td>
+                    <td style="text-align:center;"><?php
+                        if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["compra"])){
+                            echo $_SESSION["Config"]["Auto"]["btc"][$id]["compra"];
+                        }?>
+                    </td>
+                </tr><?php
+            }
+            foreach($_SESSION["Temp"]["ltc"]["MyOrdens"] as $id => $linha){?>
+                <tr>
+                    <td>
+                        <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=ltc&id=<?php echo $id;?>; else return false;','AjaxOrdens')">
+                            <img src="http://public-img.protocollive.com.br/del.gif" alt="">
+                        </a>
+                    </td>
+                    <td style="text-align:center;">LTC</td>
+                    <td style="text-align:center;"><?php echo $linha["type"] == "buy"? "Compra": "Venda"; echo " (".count($linha["operations"]).")";?></td>
+                    <td style="text-align:center;"><?php echo $linha["volume"];?></td>
+                    <td style="text-align:center;"><?php echo $_SESSION["Temp"]["Precos"][] = $linha["price"];?></td>
+                    <td style="text-align:center;"><?php
+                        if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["venda"])){
+                            echo $_SESSION["Config"]["Auto"]["ltc"][$id]["venda"];
+                        }?>
+                    </td>
+                    <td style="text-align:center;"><?php
+                        if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["compra"])){
+                            echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compra"];
+                        }?>
+                    </td>
+                </tr><?php
+            }
         }?>
     </table><?php
 }

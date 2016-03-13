@@ -47,12 +47,23 @@ require_once("system.php");?>
                     document.getElementById("1ordem-" + i).style.backgroundColor = "#ff4500";
                 }else if(temp >= 5 == true){
                     document.getElementById("1ordem-" + i).style.backgroundColor = "#ffa500";
-                }else if(temp >= 1 == true){
+                }else if(temp >= 2 == true){
                     document.getElementById("1ordem-" + i).style.backgroundColor = "#fffacd";
                 }else{
-                    document.getElementById("1ordem-" + i).style.backgroundColor = "#fff";
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "transparent";
+                }
+            }else{
+                if(temp >= 300 == true){
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#ff4500";
+                }else if(temp >= 100 == true){
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#ffa500";
+                }else if(temp >= 10 == true){
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#fffacd";
+                }else{
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "transparent";
                 }
             }
+            document.getElementById("1ordem-" + i).style.transition = "background-color 0.5s linear";
             temp = Dados["bids"][i][0] * 1.01;
             document.getElementById("1ordem-" + i).title = "1% = " + temp.toFixed(5) + 
                 "\nOrdens na frente: " + conta1 +
@@ -73,12 +84,23 @@ require_once("system.php");?>
                     document.getElementById("2ordem-" + i).style.backgroundColor = "#ff4500";
                 }else if(temp >= 5 == true){
                     document.getElementById("2ordem-" + i).style.backgroundColor = "#ffa500";
-                }else if(temp >= 1 == true){
+                }else if(temp >= 2 == true){
                     document.getElementById("2ordem-" + i).style.backgroundColor = "#fffacd";
                 }else{
-                    document.getElementById("2ordem-" + i).style.backgroundColor = "#fff";
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "transparent";
+                }
+            }else{
+                if(temp >= 300 == true){
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#ff4500";
+                }else if(temp >= 100 == true){
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#ffa500";
+                }else if(temp >= 10 == true){
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#fffacd";
+                }else{
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "transparent";
                 }
             }
+            document.getElementById("2ordem-" + i).style.transition = "background-color 0.5s linear";
             temp = Dados["asks"][i][0] / 1.01;
             document.getElementById("2ordem-" + i).title = "1% = " + temp.toFixed(5) + 
                 "\nOrdens na frente: " + conta2 +
@@ -107,8 +129,14 @@ require_once("system.php");?>
             d = Date.now() / 1000;
             d -= Dados[i]["date"];
             d /= 60;
-            d = d.toFixed(2);
-            document.getElementById("mercado-" + i).title = "Tempo: " + d + " minutos";
+            if(d > 60){
+                d /= 60;
+                d = d.toFixed(2);
+                document.getElementById("mercado-" + i).title = "Tempo: " + d + " horas";
+            }else{
+                d = d.toFixed(2);
+                document.getElementById("mercado-" + i).title = "Tempo: " + d + " minutos";
+            }
             d = new Date(Dados[i]["date"] * 1000);
             document.getElementById("mercado-" + i + "-0").innerHTML = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
             if(Dados[i]["type"] == "buy"){

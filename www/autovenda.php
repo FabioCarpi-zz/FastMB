@@ -1,7 +1,7 @@
 <?php
 
 $dados = MB("OrderList&pair=btc_brl&status=completed&type=buy&since=".strtotime("-1 minutes"));
-if(!is_null($dados) and count($dados["return"]) == 1){
+if(!is_null($dados) and $dados["success"] == 1 and count($dados["return"]) == 1){
     $id = key($dados["return"]);
     $dados = $dados["return"][$id];
     if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["venda"])){
@@ -16,7 +16,7 @@ if(!is_null($dados) and count($dados["return"]) == 1){
 }
 
 $dados = MB("OrderList&pair=btc_brl&status=completed&type=sell&since=".strtotime("-1 minutes"));
-if(!is_null($dados) and count($dados["return"]) == 1){
+if(!is_null($dados) and $dados["success"] == 1 and count($dados["return"]) == 1){
     $id = key($dados["return"]);
     $dados = $dados["return"][$id];
     if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["compra"])){
@@ -31,7 +31,7 @@ if(!is_null($dados) and count($dados["return"]) == 1){
 }
 
 $dados = MB("OrderList&pair=ltc_brl&status=completed&type=buy&since=".strtotime("-1 minutes"));
-if(!is_null($dados) and count($dados["return"]) == 1){
+if(!is_null($dados) and $dados["success"] == 1 and count($dados["return"]) == 1){
     $id = key($dados["return"]);
     $dados = $dados["return"][$id];
     if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["venda"])){
@@ -46,7 +46,7 @@ if(!is_null($dados) and count($dados["return"]) == 1){
 }
 
 $dados = MB("OrderList&pair=ltc_brl&status=completed&type=sell&since=".strtotime("-1 minutes"));
-if(!is_null($dados) and count($dados["return"]) == 1){
+if(!is_null($dados) and $dados["success"] == 1 and count($dados["return"]) == 1){
     $id = key($dados["return"]);
     $dados = $dados["return"][$id];
     if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["compra"])){

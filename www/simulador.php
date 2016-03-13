@@ -41,7 +41,7 @@ require_once("system.php");?>
         </tr>
         <tr>
             <td style="white-space:nowrap;border:none;">Valor pretendido:</td>
-            <td style="border:none;"><input type="text" name="compra" size="12" onkeyup="Calcular()" onchange="Calcular()"></td>
+            <td style="border:none;"><input type="text" name="compra" size="12" onkeyup="Calcular()" onchange="Calcular()" onclick="this.select();"></td>
         </tr>
         <tr>
             <td style="border:none;">Bitcoins:</td>
@@ -57,7 +57,7 @@ require_once("system.php");?>
         </tr>
         <tr>
             <td style="white-space:nowrap;border:none;">Valor pretendido:</td>
-            <td style="border:none;"><input type="text" name="venda" size="12" onkeyup="Calcular2()" onchange="Calcular2()"></td>
+            <td style="border:none;"><input type="text" name="venda" size="12" onkeyup="Calcular2()" onchange="Calcular2()" onclick="this.select();"></td>
         </tr>
         <tr>
             <td style="border:none;">Taxa venda:</td>
