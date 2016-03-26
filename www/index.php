@@ -37,7 +37,7 @@ if(isset($_GET["Action"])){
                 >Simulador</a>
             </td>
             <td rowspan="3" style="border:none;vertical-align:top;width:50%;">
-                <iframe src="https://www.tradingview.com/chart/8rG7IftD/" width="100%" id="chart"></iframe>
+                <iframe src="https://www.tradingview.com/chart/abvd3Pi9/" width="100%" id="chart"></iframe>
             </td>
         </tr>
         <tr>
