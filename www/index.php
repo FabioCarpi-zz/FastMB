@@ -28,8 +28,10 @@ if(isset($_GET["Action"])){
                 <a href="#" onclick="Ajax('concluidas.php','AjaxJanelaConcluidasConteudo');
                     var e = document.getElementById('AjaxJanelaConcluidas');
                     e.style.visibility = 'visible';
-                    e.style.overflow = 'auto';
-                    e.style.height = (window.innerHeight / 1.1) + 'px';"
+                    e.style.height = (window.innerHeight / 1.1) + 'px';
+                    e.style.left = (window.innerWidth / 5) + 'px';
+                    var e = document.getElementById('AjaxJanelaConcluidasConteudo');
+                    e.style.overflow = 'auto';"
                 >Concluídas</a> - 
                 <a href="#" onclick="Ajax('simulador.php','AjaxJanelaSimuladorConteudo');
                     var e = document.getElementById('AjaxJanelaSimulador');

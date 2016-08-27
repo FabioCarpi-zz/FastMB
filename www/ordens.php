@@ -49,14 +49,6 @@ if(isset($_GET["Action"])){
             "&price=".str_replace(",", ".", $_POST["valor"]));
         if($dados["success"]){
             echo "Ordem criada com êxito";
-            if($_POST["autovenda"] != ""){
-                $_SESSION["Config"]["Auto"][$_POST["pair"]][key($dados["return"])] = array(
-                    "tipo" => $_POST["tipo"],
-                    "venda" => number_format($temp = $_POST["valor"] + (($_POST["valor"] * $_POST["autovenda"]) / 100), 5),
-                    "compra" => number_format($temp - (($temp * $_POST["autocompra"]) / 100), 5)
-                );
-                ConfigSave();
-            }
         }else{
             echo $dados["error"];
         }
@@ -65,9 +57,6 @@ if(isset($_GET["Action"])){
         $dados = MB("CancelOrder&pair=".$_GET["pair"]."_brl&order_id=".$_GET["id"]);
         if($dados["success"]){
             echo "Ordem excluída com êxito<br>";
-            unset($_SESSION["Config"]["Auto"][$_GET["pair"]][$_GET["id"]]);
-            unset($_SESSION["Config"]["Bot"][$_GET["id"]]);
-            ConfigSave();
         }else{
             echo $dados["error"];
         }?>
@@ -123,4 +112,7 @@ if(isset($_GET["Action"])){
             }
         }?>
     </table><?php
+    $api = @file_get_contents("https://www.mercadobitcoin.net/api/ticker");
+    $api = @json_decode($api, true);
+    echo "Volume Bitcoins: ".$api["ticker"]["vol"];
 }
