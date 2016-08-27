@@ -10,21 +10,24 @@
         "log_file": ""
     },
     "main_window": {
-        "title": "FastMB",
+        "title": "Protocol FastMB",
         "icon": "favicon.ico",
-        "default_size": [1024, 768],
-        "minimum_size": [800, 600],
+        "default_size": [800, 600],
+        "minimum_size": [640, 480],
         "maximum_size": [0, 0],
         "disable_maximize_button": false,
         "center_on_screen": true,
         "start_maximized": true,
-        "start_fullscreen": false
+        "start_fullscreen": false,
+        "always_on_top": false,
+        "minimize_to_tray": false,
+        "minimize_to_tray_message": "Minimizar"
     },
     "popup_window": {
         "icon": "favicon.ico",
-        "fixed_title": "FastMB",
+        "fixed_title": "Protocol FastMB",
         "center_relative_to_parent": true,
-        "default_size": [1024, 768]
+        "default_size": [800, 600]
     },
     "web_server": {
         "listen_on": ["127.0.0.1", 0],
@@ -33,11 +36,12 @@
         "cgi_interpreter": "php/php-cgi.exe",
         "cgi_extensions": ["php"],
         "cgi_temp_dir": "",
-        "404_handler": "/pretty-urls.php"
+        "404_handler": "/pretty-urls.php",
+        "hide_files": []
     },
     "chrome": {
         "log_file": "",
-        "log_severity": "none",
+        "log_severity": "default",
         "cache_path": "webcache",
         "external_drag": true,
         "external_navigation": true,
