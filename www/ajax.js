@@ -15,7 +15,7 @@ function Ajax(Url, Retorno, Dados, Atualizar){
     }
 	ObjetoAjax[Retorno].onreadystatechange = function (){
 		if(ObjetoAjax[Retorno].readyState == 1){
-			document.getElementById(Retorno).innerHTML = "<img src=\"http://public-img.protocollive.com.br/carregando.gif\" alt=\"\">";
+			document.getElementById(Retorno).innerHTML = "<img src=\"images/carregando.gif\" alt=\"\">";
 			document.body.style.cursor = "progress";
 		}else if(ObjetoAjax[Retorno].readyState == 4 && ObjetoAjax[Retorno].status == 404){
 			document.getElementById(Retorno).innerHTML = "Erro 404: Página não encontrada";

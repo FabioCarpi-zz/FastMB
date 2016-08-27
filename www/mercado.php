@@ -71,9 +71,9 @@ require_once("system.php");?>
             soma1 += Dados["bids"][i][1];
             conta1++;
             if(document.getElementById("1ordem-" + i + "-2").innerHTML > Dados["bids"][i][0]){
-                document.getElementById("1ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_down_big.gif\" alt=\"\">";
+                document.getElementById("1ordem-" + i + "-0").innerHTML = "<img src=\"images/arrow_down_big.gif\" alt=\"\">";
             }else if(document.getElementById("1ordem-" + i + "-2").innerHTML < Dados["bids"][i][0]){
-                document.getElementById("1ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_up_big.gif\" alt=\"\">";
+                document.getElementById("1ordem-" + i + "-0").innerHTML = "<img src=\"images/arrow_up_big.gif\" alt=\"\">";
             }
             document.getElementById("1ordem-" + i + "-1").innerHTML = Dados["bids"][i][1];
             document.getElementById("1ordem-" + i + "-2").innerHTML = Dados["bids"][i][0];
@@ -108,9 +108,9 @@ require_once("system.php");?>
             soma2 += Dados["asks"][i][1];
             conta2++;
             if(document.getElementById("2ordem-" + i + "-2").innerHTML > Dados["asks"][i][0]){
-                document.getElementById("2ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_down_big.gif\" alt=\"\">";
+                document.getElementById("2ordem-" + i + "-0").innerHTML = "<img src=\"images/arrow_down_big.gif\" alt=\"\">";
             }else if(document.getElementById("2ordem-" + i + "-2").innerHTML < Dados["asks"][i][0]){
-                document.getElementById("2ordem-" + i + "-0").innerHTML = "<img src=\"http://public-img.protocollive.com.br/arrow_up_big.gif\" alt=\"\">";
+                document.getElementById("2ordem-" + i + "-0").innerHTML = "<img src=\"images/arrow_up_big.gif\" alt=\"\">";
             }
             document.getElementById("2ordem-" + i + "-1").innerHTML = Dados["asks"][i][1];
             document.getElementById("2ordem-" + i + "-2").innerHTML = Dados["asks"][i][0];

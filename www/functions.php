@@ -1,12 +1,12 @@
 <?php
 
 function PhpLiveImport($nome){
-	$arquivo = @file_get_contents("https://raw.githubusercontent.com/FabioCarpi/PHP-Live/master/".$nome.".txt");
-	$nome = "PhpLive-".$nome.".php";
-	if(!file_exists($nome) or ($arquivo !== false and hash_file("md5", $nome) != md5("<?php\n//".$arquivo))){
-		file_put_contents($nome, "<?php\n//".$arquivo);
-	}
-	require_once($nome);
+    $arquivo = @file_get_contents("https://raw.githubusercontent.com/FabioCarpi/PHP-Live/master/".$nome.".txt");
+    $nome = "PhpLive-".$nome.".php";
+    if(!file_exists($nome) or ($arquivo !== false and hash_file("md5", $nome) != md5("<?php\n//".$arquivo))){
+        file_put_contents($nome, "<?php\n".$arquivo);
+    }
+    require_once($nome);
 }
 
 function MB($Comando, $Json = false){
@@ -48,17 +48,23 @@ function ConfigSave(){
 function Update($Tipo = null){
     if($Tipo == null or strtolower($Tipo) == strtolower("Saldos")){
         @$dados = MB("getInfo");
-        if(!is_null($dados) and $dados["success"] == 1){
+        if($dados["success"] == 0){
+            echo $dados["error"];
+        }elseif(!is_null($dados)){
             $_SESSION["Temp"]["Saldos"] = $dados["return"]["funds"];
         }
     }
     if($Tipo == null or $Tipo == "MyOrdens"){
         @$dados = MB("OrderList&pair=btc_brl&status=active");
-        if(!is_null($dados) and $dados["success"] == 1){
+        if($dados["success"] == 0){
+            echo $dados["error"];
+        }elseif(!is_null($dados)){
             $_SESSION["Temp"]["btc"]["MyOrdens"] = $dados["return"];
         }
         @$dados = MB("OrderList&pair=ltc_brl&status=active");
-        if(!is_null($dados) and $dados["success"] == 1){
+        if($dados["success"] == 0){
+            echo $dados["error"];
+        }elseif(!is_null($dados)){
             $_SESSION["Temp"]["ltc"]["MyOrdens"] = $dados["return"];
         }
     }

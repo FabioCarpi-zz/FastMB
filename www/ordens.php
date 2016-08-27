@@ -101,7 +101,7 @@ if(isset($_GET["Action"])){
                 <tr>
                     <td>
                         <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=btc&id=<?php echo $id;?>; else return false;','AjaxOrdens')">
-                            <img src="http://public-img.protocollive.com.br/del.gif" alt="">
+                            <img src="images/del.gif" alt="">
                         </a>
                     </td>
                     <td style="text-align:center;">BTC</td>
@@ -129,7 +129,7 @@ if(isset($_GET["Action"])){
                 <tr>
                     <td>
                         <a href="#" onclick="if(confirm('Deseja realmente excluir essa ordem?')) Ajax('ordens.php?Action=Del&pair=ltc&id=<?php echo $id;?>; else return false;','AjaxOrdens')">
-                            <img src="http://public-img.protocollive.com.br/del.gif" alt="">
+                            <img src="images/del.gif" alt="">
                         </a>
                     </td>
                     <td style="text-align:center;">LTC</td>
