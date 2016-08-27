@@ -30,21 +30,6 @@ function MB($Comando, $Json = false){
     }
 }
 
-function ConfigLoad(){
-    //if(isset($_SESSION["Config"])){
-    //}else
-    if(!file_exists("db.json")){
-        file_put_contents("db.json", null);
-        $_SESSION["Config"] = array();
-    }else{
-        $_SESSION["Config"] = json_decode(file_get_contents("db.json"), true);
-    }
-}
-
-function ConfigSave(){
-    file_put_contents("db.json", json_encode($_SESSION["Config"], JSON_PRETTY_PRINT));
-}
-
 function Update($Tipo = null){
     if($Tipo == null or strtolower($Tipo) == strtolower("Saldos")){
         @$dados = MB("getInfo");

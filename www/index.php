@@ -50,7 +50,7 @@ if(isset($_GET["Action"])){
 
     <div id="AjaxJanelaConcluidas">
         <div id="AjaxJanelaConcluidasTitulo" style="text-align:right;background-color:#3366ff;">
-            <img src="http://public-img.protocollive.com.br/close.gif" onclick="
+            <img src="images/close.gif" onclick="
                 var e = document.getElementById('AjaxJanelaConcluidas');
                 e.style.visibility = 'hidden';
                 e.style.overflow = 'hidden';" alt="">
@@ -60,7 +60,7 @@ if(isset($_GET["Action"])){
 
     <div id="AjaxJanelaSimulador">
         <div id="AjaxJanelaSimuladorTitulo" style="text-align:right;background-color:#3366ff;">
-            <img src="http://public-img.protocollive.com.br/close.gif" onclick="
+            <img src="images/close.gif" onclick="
                 var e = document.getElementById('AjaxJanelaSimulador');
                 e.style.visibility = 'hidden';" alt="">
         </div>
@@ -69,7 +69,7 @@ if(isset($_GET["Action"])){
 
     <div id="AjaxJanelaNova">
         <div id="AjaxJanelaNovaTitulo" style="text-align:right;background-color:#3366ff;">
-            <img src="http://public-img.protocollive.com.br/close.gif" onclick="
+            <img src="images/close.gif" onclick="
                 var e = document.getElementById('AjaxJanelaNova');
                 e.style.visibility = 'hidden';" alt="">
         </div>

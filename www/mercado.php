@@ -48,7 +48,7 @@ require_once("system.php");?>
                 }else if(temp >= 5 == true){
                     document.getElementById("1ordem-" + i).style.backgroundColor = "#ffa500";
                 }else if(temp >= 2 == true){
-                    document.getElementById("1ordem-" + i).style.backgroundColor = "#fffacd";
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#ffff66";
                 }else{
                     document.getElementById("1ordem-" + i).style.backgroundColor = "transparent";
                 }
@@ -58,7 +58,7 @@ require_once("system.php");?>
                 }else if(temp >= 100 == true){
                     document.getElementById("1ordem-" + i).style.backgroundColor = "#ffa500";
                 }else if(temp >= 10 == true){
-                    document.getElementById("1ordem-" + i).style.backgroundColor = "#fffacd";
+                    document.getElementById("1ordem-" + i).style.backgroundColor = "#ffff66";
                 }else{
                     document.getElementById("1ordem-" + i).style.backgroundColor = "transparent";
                 }
@@ -85,7 +85,7 @@ require_once("system.php");?>
                 }else if(temp >= 5 == true){
                     document.getElementById("2ordem-" + i).style.backgroundColor = "#ffa500";
                 }else if(temp >= 2 == true){
-                    document.getElementById("2ordem-" + i).style.backgroundColor = "#fffacd";
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#ffff66";
                 }else{
                     document.getElementById("2ordem-" + i).style.backgroundColor = "transparent";
                 }
@@ -95,7 +95,7 @@ require_once("system.php");?>
                 }else if(temp >= 100 == true){
                     document.getElementById("2ordem-" + i).style.backgroundColor = "#ffa500";
                 }else if(temp >= 10 == true){
-                    document.getElementById("2ordem-" + i).style.backgroundColor = "#fffacd";
+                    document.getElementById("2ordem-" + i).style.backgroundColor = "#ffff66";
                 }else{
                     document.getElementById("2ordem-" + i).style.backgroundColor = "transparent";
                 }

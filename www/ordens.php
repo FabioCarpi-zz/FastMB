@@ -35,16 +35,12 @@ if(isset($_GET["Action"])){
                 }else if(document.ordem.tipo.value == 'sell' && document.ordem.pair.value == 'ltc'){
                     document.ordem.volume.value = <?php echo $_SESSION["Temp"]["Saldos"]["ltc"];?>
                 }"><br>
-            Auto venda: <input type="text" name="autovenda" size="2" onchange="Atualizar();" onkeyup="Atualizar();"><input type="text" name="autovenda2" size="7" disabled><br>
-            Auto compra: <input type="text" name="autocompra" size="2" onchange="Atualizar();" onkeyup="Atualizar();"><input type="text" name="autocompra2" size="7" disabled><br>
             <br>
             <input type="button" value=" Criar " onclick="Ajax('ordens.php?Action=New','AjaxSave',
                 'pair='+document.ordem.pair.value+
                 '&tipo='+document.ordem.tipo.value+
                 '&valor='+document.ordem.valor.value+
-                '&volume='+document.ordem.volume.value+
-                '&autovenda='+document.ordem.autovenda.value+
-                '&autocompra='+document.ordem.autocompra.value);"><br>
+                '&volume='+document.ordem.volume.value);"><br>
             <span id="AjaxSave"></span>
         </form><br><?php
     }elseif($_GET["Action"] == "New"){
@@ -79,7 +75,6 @@ if(isset($_GET["Action"])){
             Ajax('index.php?Action=Saldo','AjaxSaldo',null,true);">Atualizar</a><?php
     }
 }else{
-    require_once("autovenda.php");
     Update("MyOrdens");
     $_SESSION["Temp"]["Auto"] = array();?>
     <table class="Center">
@@ -92,8 +87,6 @@ if(isset($_GET["Action"])){
             <th>Tipo</th>
             <th>Volume</th>
             <th>Valor</th>
-            <th>Auto venda</th>
-            <th>Auto compra</th>
         </tr><?php
         $_SESSION["Temp"]["Precos"] = array();
         if(isset($_SESSION["Temp"]["btc"])){
@@ -112,17 +105,7 @@ if(isset($_GET["Action"])){
                     }
                     echo " (".count($linha["operations"]).")";?></td>
                     <td style="text-align:center;"><?php echo $linha["volume"];?></td>
-                    <td style="text-align:center;"><?php echo $_SESSION["Temp"]["Precos"][] = $linha["price"];?></td>
-                    <td style="text-align:center;"><?php
-                        if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["venda"])){
-                            echo $_SESSION["Config"]["Auto"]["btc"][$id]["venda"];
-                        }?>
-                    </td>
-                    <td style="text-align:center;"><?php
-                        if(isset($_SESSION["Config"]["Auto"]["btc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["btc"][$id]["compra"])){
-                            echo $_SESSION["Config"]["Auto"]["btc"][$id]["compra"];
-                        }?>
-                    </td>
+                    <td style="text-align:center;"><?php echo $linha["price"];?></td>
                 </tr><?php
             }
             foreach($_SESSION["Temp"]["ltc"]["MyOrdens"] as $id => $linha){?>
@@ -135,17 +118,7 @@ if(isset($_GET["Action"])){
                     <td style="text-align:center;">LTC</td>
                     <td style="text-align:center;"><?php echo $linha["type"] == "buy"? "Compra": "Venda"; echo " (".count($linha["operations"]).")";?></td>
                     <td style="text-align:center;"><?php echo $linha["volume"];?></td>
-                    <td style="text-align:center;"><?php echo $_SESSION["Temp"]["Precos"][] = $linha["price"];?></td>
-                    <td style="text-align:center;"><?php
-                        if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["venda"])){
-                            echo $_SESSION["Config"]["Auto"]["ltc"][$id]["venda"];
-                        }?>
-                    </td>
-                    <td style="text-align:center;"><?php
-                        if(isset($_SESSION["Config"]["Auto"]["ltc"][$id]) and !is_null($_SESSION["Config"]["Auto"]["ltc"][$id]["compra"])){
-                            echo $_SESSION["Config"]["Auto"]["ltc"][$id]["compra"];
-                        }?>
-                    </td>
+                    <td style="text-align:center;"><?php echo $linha["price"];?></td>
                 </tr><?php
             }
         }?>
