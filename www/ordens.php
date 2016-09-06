@@ -114,5 +114,5 @@ if(isset($_GET["Action"])){
     </table><?php
     $api = @file_get_contents("https://www.mercadobitcoin.net/api/ticker");
     $api = @json_decode($api, true);
-    echo "Volume Bitcoins: ".$api["ticker"]["vol"];
+    echo "Menor: ".$api["ticker"]["low"]." - Maior: ".$api["ticker"]["high"]." - Volume: ".$api["ticker"]["vol"];
 }
