@@ -1,7 +1,7 @@
 This snapshot was automatically generated on
-Thu, 18 Aug 2016 17:58:09 +0000
+Tue, 13 Sep 2016 23:41:08 +0000
 
-Version: 7.0.10
+Version: 7.0.11
 Branch: HEAD
 Build: C:\php-sdk\php70dev\vc14\x64\obj\Release_TS
 
@@ -113,6 +113,7 @@ Module: php7phpdbg.dll
 Module: php_phpdbg_webhelper.dll
 ===========================
 	vcruntime140.dll
+	api-ms-win-crt-heap-l1-1-0.dll
 	api-ms-win-crt-runtime-l1-1-0.dll
 
 Module: php_bz2.dll
