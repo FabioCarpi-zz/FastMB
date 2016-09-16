@@ -2,7 +2,7 @@
 ad930596c50d25c5beeeb7163aa921ce C:\GitHub\FastMB\www\concluidas.php
 bab696935767418bbb81583638a7b26d C:\GitHub\FastMB\www\config.php
 a92143d61f3400c353ad3bf7c73b64d9 C:\GitHub\FastMB\www\foot.php
-747cc5ca8145ebb6fc44c6fdb705aaf7 C:\GitHub\FastMB\www\functions.php
+af88e53fee1793d5a8ecb905f13909c2 C:\GitHub\FastMB\www\functions.php
 258ae0c8a74999f0f5220ecdc3a9e523 C:\GitHub\FastMB\www\global.css
 28a5d18d8c072af32833c1fb3019c852 C:\GitHub\FastMB\www\head.php
 1169228e682d11852380a64273950a48 C:\GitHub\FastMB\www\images\arrow_down_big.gif
@@ -16,4 +16,4 @@ bc6976daad5084b20735e2efc8279df0 C:\GitHub\FastMB\www\mercado.php
 8f4db046570671f8508cfa654d2a3a76 C:\GitHub\FastMB\www\simulador.php
 c81f3d2e8471ebbb728eb14c3c4fb16e C:\GitHub\FastMB\www\system.php
 9693fb8a7215d259936fc4b66cb63f1d C:\GitHub\FastMB\www\translate.php
-1959fba51b4716397b480245b7a61c54 C:\GitHub\FastMB\www\versao.txt
+a8d3250a28dbbde1afb63194d48eaa6e C:\GitHub\FastMB\www\versao.txt
