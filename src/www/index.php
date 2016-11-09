@@ -16,7 +16,7 @@ if(isset($_GET["Action"])){
         <tr>
             <td style="text-align:center;width:200px;border:none;" id="AjaxSaldo"></td>
             <td style="text-align:center;border:none;">
-                Versão <?php echo file_get_contents("versao.txt");?> / <?php echo file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/www/versao.txt");?><br>
+                Versão <?php echo file_get_contents("versao.txt");?> / <?php echo file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/src/www/versao.txt");?><br>
                 <?php PhpLiveImport("debug");?>
                 PHP: <?php echo phpversion();?> / <?php echo PhpUpdate();?><br>
                 Negociações: <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxPagina');">Bitcoins</a> -

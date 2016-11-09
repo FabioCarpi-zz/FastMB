@@ -1,10 +1,10 @@
 <?php
 
 function PhpLiveImport($nome){
-    $arquivo = @file_get_contents("https://raw.githubusercontent.com/FabioCarpi/PHP-Live/master/".$nome.".php");
+    $arquivo = @file_get_contents("https://raw.githubusercontent.com/FabioCarpi/PHP-Live/master/src/".$nome.".php");
     $nome = "PhpLive-".$nome.".php";
-    if(!file_exists($nome) or ($arquivo !== false and hash_file("md5", $nome) != md5("<?php\n//".$arquivo))){
-        file_put_contents($nome, "<?php\n".$arquivo);
+    if(!file_exists($nome) or ($arquivo !== false and hash_file("md5", $nome) != md5($arquivo))){
+        file_put_contents($nome, $arquivo);
     }
     require_once($nome);
 }
