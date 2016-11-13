@@ -163,7 +163,7 @@ require_once("system.php");?>
             <table id="OrdensCompra">
                 <tr><th colspan="3">Ordens de compra</th></tr>
                 <tr>
-                    <td></td>
+                    <td onclick="TempoReal(1); TempoReal(2);"></td>
                     <th>Quantia</th>
                     <th>Valor</th>
                 </tr><?php
@@ -180,7 +180,7 @@ require_once("system.php");?>
             <table id="OrdensVenda">
                 <tr><th colspan="3">Ordens de venda</th></tr>
                 <tr>
-                    <td></td>
+                    <td onclick="TempoReal(1); TempoReal(2);"></td>
                     <th>Quantia</th>
                     <th>Valor</th>
                 </tr><?php
