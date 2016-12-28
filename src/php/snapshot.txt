@@ -1,9 +1,9 @@
 This snapshot was automatically generated on
-Tue, 08 Nov 2016 22:29:19 +0000
+Fri, 02 Dec 2016 06:14:01 +0000
 
-Version: 7.0.13
+Version: 7.1.0
 Branch: HEAD
-Build: C:\php-sdk\php70dev\vc14\x64\obj\Release_TS
+Build: C:\php-sdk\php71\vc14\x64\obj\Release_TS
 
 Built-in Extensions
 ===========================
@@ -19,6 +19,7 @@ json
 mcrypt
 SPL
 pcre
+readline
 Reflection
 session
 standard
@@ -70,7 +71,6 @@ Module: php.exe
 	api-ms-win-crt-time-l1-1-0.dll
 	api-ms-win-crt-utility-l1-1-0.dll
 	api-ms-win-crt-convert-l1-1-0.dll
-	api-ms-win-crt-filesystem-l1-1-0.dll
 	api-ms-win-crt-math-l1-1-0.dll
 	api-ms-win-crt-locale-l1-1-0.dll
 
@@ -365,6 +365,7 @@ Module: php_sqlite3.dll
 	api-ms-win-crt-runtime-l1-1-0.dll
 	api-ms-win-crt-time-l1-1-0.dll
 	api-ms-win-crt-utility-l1-1-0.dll
+	api-ms-win-crt-math-l1-1-0.dll
 
 Module: php_sysvshm.dll
 ===========================
@@ -444,6 +445,7 @@ Module: php_pdo_sqlite.dll
 	api-ms-win-crt-runtime-l1-1-0.dll
 	api-ms-win-crt-time-l1-1-0.dll
 	api-ms-win-crt-utility-l1-1-0.dll
+	api-ms-win-crt-math-l1-1-0.dll
 
 Module: php_soap.dll
 ===========================

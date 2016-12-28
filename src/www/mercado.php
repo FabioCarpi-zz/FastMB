@@ -20,12 +20,14 @@ require_once("system.php");?>
         }
         ObjetoAjax["TempoReal" + Tipo].onreadystatechange = function (){
             if(ObjetoAjax["TempoReal" + Tipo].readyState == 4 && (ObjetoAjax["TempoReal" + Tipo].status == 200 || ObjetoAjax["TempoReal" + Tipo].status == 500)){
-                if(Tipo == 1){
-                    PovoarOrdens(JSON.parse(ObjetoAjax["TempoReal" + Tipo].responseText));
-                    console.log("Ordens atualizadas");
-                }else{
-                    PovoarMercado(JSON.parse(ObjetoAjax["TempoReal" + Tipo].responseText));
-                    console.log("Mercado atualizado");
+                if(ObjetoAjax["TempoReal" + Tipo].responseText != ""){
+                    if(Tipo == 1){
+                        PovoarOrdens(JSON.parse(ObjetoAjax["TempoReal" + Tipo].responseText));
+                        console.log("Ordens atualizadas");
+                    }else{
+                        PovoarMercado(JSON.parse(ObjetoAjax["TempoReal" + Tipo].responseText));
+                        console.log("Mercado atualizado");
+                    }
                 }
             }
         }
