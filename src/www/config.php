@@ -1,5 +1,4 @@
 <?php
-
 // Obtenha esses dados no site Mercado Bitcoin
 // Vá em configurações e em Trade API
 // Crie uma chave caso não tenha

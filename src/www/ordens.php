@@ -105,7 +105,12 @@ if(isset($_GET["Action"])){
                         </a>
                     </td>
                     <td style="text-align:center;">LTC</td>
-                    <td style="text-align:center;"><?php echo $linha["type"] == "buy"? "Compra": "Venda"; echo " (".count($linha["operations"]).")";?></td>
+                    <td style="text-align:center;"><?php if($linha["type"] == "buy"){?>
+                        <span style="color:#0a0">Compra</span><?php
+                    }else{?>
+                        <span style="color:#f00">Venda</span><?php
+                    }
+                    echo " (".count($linha["operations"]).")";?></td>
                     <td style="text-align:center;"><?php echo $linha["volume"];?></td>
                     <td style="text-align:center;"><?php echo $linha["price"];?></td>
                 </tr><?php
