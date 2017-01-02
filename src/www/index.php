@@ -17,13 +17,12 @@ if(isset($_GET["Action"])){
             <td style="text-align:center;width:200px;border:none;" id="AjaxSaldo"></td>
             <td style="text-align:center;border:none;">
                 Versão <?php echo file_get_contents("versao.txt");?> / <?php echo @file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/src/www/versao.txt");?><br>
-                <?php PhpLiveImport("debug");?>
+                <?php GithubImport("FabioCarpi", "PHP-Live", "src", "debug.php");?>
                 PHP: <?php echo phpversion();?> / <?php echo PhpUpdate();?><br>
                 Negociações: <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxPagina');">Bitcoins</a> -
                 <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxPagina');">Litecoin</a><br> 
                 Ordens: <a href="#" onclick="Ajax('ordens.php?Action=Form','AjaxJanelaNovaConteudo');
-                    var e = document.getElementById('AjaxJanelaNova');
-                    e.style.visibility = 'visible';"
+                    document.getElementById('AjaxJanelaNova').style.visibility = 'visible';"
                 >Nova</a> -
                 <a href="#" onclick="Ajax('concluidas.php','AjaxJanelaConcluidasConteudo');
                     var e = document.getElementById('AjaxJanelaConcluidas');

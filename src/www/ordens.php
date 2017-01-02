@@ -2,8 +2,7 @@
 require_once("system.php");
 
 if(isset($_GET["Action"])){
-    if($_GET["Action"] == "Form"){
-        Update("Saldos");?>
+    if($_GET["Action"] == "Form"){?>
         <script>
             function Atualizar(){
                 var num = document.ordem.valor.value * 1.01;
@@ -28,12 +27,12 @@ if(isset($_GET["Action"])){
             Quantidade: <input type="text" name="volume" size="10">
             <input type="button" value="&lt;&lt;" onclick="
                 if(document.ordem.tipo.value == 'buy'){
-                    num = <?php echo $_SESSION["Temp"]["Saldos"]["brl"];?> / document.ordem.valor.value;
+                    num = document.getElementById('brl').innerHTML / document.ordem.valor.value;
                     document.ordem.volume.value = num.toFixed(8);
                 }else if(document.ordem.tipo.value == 'sell' && document.ordem.pair.value == 'btc'){
-                    document.ordem.volume.value = <?php echo $_SESSION["Temp"]["Saldos"]["btc"];?>;
+                    document.ordem.volume.value = num = document.getElementById('btc').innerHTML;
                 }else if(document.ordem.tipo.value == 'sell' && document.ordem.pair.value == 'ltc'){
-                    document.ordem.volume.value = <?php echo $_SESSION["Temp"]["Saldos"]["ltc"];?>
+                    document.ordem.volume.value = num = document.getElementById('ltc').innerHTML;
                 }"><br>
             <br>
             <input type="button" value=" Criar " onclick="Ajax('ordens.php?Action=New','AjaxSave',
