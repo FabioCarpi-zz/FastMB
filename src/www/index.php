@@ -17,7 +17,7 @@ if(isset($_GET["Action"])){
             <td style="text-align:center;width:200px;border:none;" id="AjaxSaldo"></td>
             <td style="text-align:center;border:none;">
                 Versão <?php echo file_get_contents("versao.txt");?> / <?php echo @file_get_contents("https://raw.githubusercontent.com/FabioCarpi/FastMB/master/src/www/versao.txt");?><br>
-                <?php GithubImport("FabioCarpi", "PHP-Live", "src", "debug.php");?>
+                <?php GithubImport("FabioCarpi", "PHP-Live", "src/debug.php");?>
                 PHP: <?php echo phpversion();?> / <?php echo PhpUpdate();?><br>
                 Negociações: <a href="#" onclick="Ajax('mercado.php?pair=btc','AjaxPagina');">Bitcoins</a> -
                 <a href="#" onclick="Ajax('mercado.php?pair=ltc','AjaxPagina');">Litecoin</a><br> 
@@ -38,7 +38,7 @@ if(isset($_GET["Action"])){
                 >Simulador</a>
             </td>
             <td rowspan="3" style="border:none;vertical-align:top;width:50%;">
-                <iframe src="https://www.tradingview.com/chart/abvd3Pi9/" width="100%" id="chart"></iframe>
+                <iframe src="chart.php" width="100%" id="chart"></iframe>
             </td>
         </tr>
         <tr>

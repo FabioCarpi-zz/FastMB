@@ -1,9 +1,14 @@
 <?php
-//Version 1 from 2017-01-02
+//Version 1 from 2017-01-03
 
-function GithubImport($User, $Repo, $Path, $File, $Trunk = "master"){
-	$path = $User."/".$Repo."/".$Trunk."/".$Path;
-	$file = $path."/".$File;
+/**
+ * @param string $User
+ * @param string $Repo
+ * @param string $File
+ * @param string $Trunk Optional
+ */
+function GithubImport($User, $Repo, $File, $Trunk = "master"){
+	$file = $User."/".$Repo."/".$Trunk."/".$File;
 	$server = @file_get_contents("https://raw.githubusercontent.com/".$file);
 	if(file_exists($file) == false){
 		if($server === false){
@@ -13,6 +18,7 @@ function GithubImport($User, $Repo, $Path, $File, $Trunk = "master"){
 				return false;
 			}
 		}else{
+			$path = substr($file, 0, strrpos($file, "/") - 1);
 			@mkdir($path, 0777, true);
 			file_put_contents($file, $server);
 			require_once($file);
