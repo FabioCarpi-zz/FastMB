@@ -16,13 +16,15 @@
       data.addRows([<?php
 					$dados = file_get_contents("https://www.mercadobitcoin.net/api/trades/");
 					$dados = json_decode($dados, true);
+					$dados = array_reverse($dados);
 					foreach($dados as $dado){
 						echo "['".date("H:i:s",$dado["date"])."',".$dado["price"]."],";
 					}?>
       ]);
 
 			var formatter = new google.visualization.NumberFormat(
-				{negativeColor: 'red', negativeParens: true, pattern: '$#,###.#####'});
+				{negativeColor: 'red', negativeParens: true, pattern: '$#,###.#####'}
+			);
 			formatter.format(data, 1);
 
       var options = {
