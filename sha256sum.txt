@@ -1,7 +1,6 @@
-214bd2495acefea00f0e2e0e7cfbd14d13bc00250194d68c41de51b5886f7d68  C:/GitHub/FastMB/src/www/translate.php
-2de1ff315ab46d74994e2f4cd3e72956f51d0b420406dcab27658a74675efece  C:/GitHub/FastMB/src/www/versao.txt
+e5becc348c0b16069095e8ebef764bcb82b96dd44f721e52aeec233852253790  C:/GitHub/FastMB/src/www/versao.txt
 8f3badc7cf15ebebf92e03022c869a65177c74b4bf1d8814457b85e4012b0e7c  C:/GitHub/FastMB/src/www/ajax.js
-08b0a8df303ede7747b5e32c9e9de0c1d84792fe237115aa0b4575a63f6958ab  C:/GitHub/FastMB/src/www/chart.php
+b28b94318e91993a4f6dfc3890c871120239c9289bd688d967ba3b35268ce1b8  C:/GitHub/FastMB/src/www/chart.php
 7fce44b7c9fb8cbcea85408c88940412802a2b1eb119d5dd16d2dcb609669bbf  C:/GitHub/FastMB/src/www/concluidas.php
 8321fb396d6a6a7af7173c46655dff2ff9308c375e8a7db9f2bea4aab94309a8  C:/GitHub/FastMB/src/www/config.php
 f61661493a6095c7f4c5ac058a882274acaa59cc879c4b88b04dbf1c2ad79b9a  C:/GitHub/FastMB/src/www/foot.php
@@ -14,3 +13,4 @@ dc78b4cf3213b12e1dc71efe4bd5562345040c7b4bdae35f0b325efb6401a8b3  C:/GitHub/Fast
 54dbd558860266b06e2c7bd4f0f788b940ed72d41caab34523fb0c837c0fb0db  C:/GitHub/FastMB/src/www/ordens.php
 bd3cf449a2794355de4d83a0830f397feab5b578e5ee63cdce234d5f179f9e89  C:/GitHub/FastMB/src/www/simulador.php
 6a8bba97812e5547742e6900d501f5b249e1b8f13c0d2b522ab6048240c1134f  C:/GitHub/FastMB/src/www/system.php
+214bd2495acefea00f0e2e0e7cfbd14d13bc00250194d68c41de51b5886f7d68  C:/GitHub/FastMB/src/www/translate.php
